@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visitor Registration</title>
+
+    <style>
+        #title {
+            text-align:center;
+            padding:40px;
+            color: #edf5e1;
+            text-shadow: 2px 2px #000000;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+            font-size: 3em;
+
+        }
+
+        body {
+            background-color: #5cdb95;
+        }
+
+        form {
+            text-align:center;
+
+        }
+
+        .button{
+            background-color: #edf5e1;
+            border: none;
+            color: #000000;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        div {
+
+            border-radius: 5px;
+            padding: 20px;
+
+        }
+
+        input[type=text] {
+            width: 33%;
+            padding: 20px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        input[type=password] {
+            width: 33%;
+            padding: 20px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        label {
+            font-family: Open Sans, Arial;
+            font-weight: 200;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1 id="title"><strong>New Visitor Registration</strong></h1>
+<div>
+
+    <form>
+
+        <label for="email" text-align>Email:   </label>
+        <br>
+        <input type="text" id="email" name="email" placeholder="50@hardlyknowher.tke">
+        <br>
+        <label for="username" text-align>Username: </label>
+        <br>
+        <input type="text" id="username" name="username" placeholder="username">
+        <br>
+        <label for="password" text-align>Password: </label>
+        <br>
+        <input type="password" id="password" name="password" placeholder="password">
+        <br>
+        <label for="confirm" text-align>Confirm Password: </label>
+        <br>
+        <input type="password" id="confirm" name="confirm" placeholder="confirm password">
+        <br>
+        <button type="button" name="register" class="button">Register Visitor</button>
+        <button type="button" name="login" class="button">Cancel</button>
+
+    </form>
+
+</div>
+
+
+</body>
+</html>
