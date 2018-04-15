@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errormsg = "Login Credentials Invalid";
     } else {
         $row = mysqli_fetch_assoc($result);
+
         $_SESSION['username'] = $row['Username'];
         $_SESSION['email'] = $row["Email"];
         $_SESSION['UserType'] = $row["UserType"];
