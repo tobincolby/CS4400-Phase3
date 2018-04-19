@@ -15,10 +15,10 @@ if (!(isset($_SESSION['username']) && $_SESSION['logged_in'] == 1)) {
 
 $owner_username = $_SESSION['username'];
 
-$properties = $mysqli->query("SELECT DISTINCT Property.Name, Property.Street, Property.City,
-                Property.Zip, Property.Size, Property.PropertyType, Property.IsPublic, Property.IsCommercial, Property.ID,
-                COUNT(*), AVG(Visit.Rating) FROM Property, Visit WHERE Property.Owner = $owner_username AND 
-                Property.ID = Visit.PropertyID GROUP BY Property.ID ");
+$properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Street, Property.City,
+                Property.Zip, Property.Size, Property.PropertyType, Property.IsPublic, Property.ApprovedBy, Property.IsCommercial, Property.ID,
+                COUNT(Visit.PropertyID) AS Visits, AVG(Visit.Rating) AS AVGRating, Property.Owner FROM Property  LEFT JOIN Visit ON (Property.ID = Visit.PropertyID) GROUP BY Property.ID) AS PropertyVisit 
+                WHERE Owner = $owner_username");
 
 
 
