@@ -18,22 +18,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = $_POST['name'];
         $result = $mysqli->query("DELETE FROM FarmItem WHERE Name = $name");
         $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1");
-    } else if ($_POST['form'] == 'SEARCH') {
-        $searchtype = $_POST['searchtype'];
-        $searchtext = "%".$_POST['searchtext']."%";
-        if ($searchtype == 'Name') {
-            $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1 AND Name LIKE $searchtext");
-        } else {
-            $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1 AND Type LIKE $searchtext");
-        }
-    } else {
+    }  else {
         $type = $_POST['type'];
         $name = $_POST['name'];
         $result = $mysqli->query("INSERT INTO FarmItem VALUES($name, 1, $type)");
         $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1");
     }
 } else {
-    $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1");
+    $searchtype = "";
+    $searchtext = "";
+
+    if (isset($_GET['searchtype'])) {
+        $searchtype = "AND ".$_GET['searchtype'];
+        $searchtext = "LIKE %" . $_GET['searchtext'] . "%";
+    }
+
+    $sort_type = "";
+    $sort_direction = "";
+    if (isset($_GET['sort'])) {
+        $sort_type = "ORDER BY ".$_GET['sort'];
+        $sort_direction = $_GET['sort_direction'];
+    }
+
+
+    $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1 $searchtype $searchtext $sort_type $sort_direction");
 
 }
 

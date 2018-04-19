@@ -24,7 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
-$farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 0");
+$sort_type = "";
+$sort_direction = "";
+if (isset($_GET['sort'])) {
+    $sort_type = "ORDER BY ".$_GET['sort'];
+    $sort_direction = $_GET['sort_direction'];
+}
+
+$farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 0 $sort_type $sort_direction");
 
 
 ?>

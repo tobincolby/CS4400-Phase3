@@ -20,4 +20,6 @@ $properties = $mysqli->query("SELECT DISTINCT Property.Name, Property.Street, Pr
                 COUNT(*), AVG(Visit.Rating) FROM Property, Visit WHERE Property.Owner = $owner_username AND 
                 Property.ID = Visit.PropertyID GROUP BY Property.ID ");
 
+
+
 ?>
