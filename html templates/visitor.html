@@ -46,7 +46,7 @@
         }
 
         input[type=text] {
-            width: 33%;
+            width: 400px;
             padding: 20px 10px;
             margin: 8px 0;
             display: inline;
@@ -58,7 +58,7 @@
         }
 
         input[type=password] {
-            width: 33%;
+            width: 400px;
             padding: 20px 10px;
             margin: 8px 0;
             display: inline;
@@ -84,22 +84,29 @@
 
     <form>
 
-        <label for="email" text-align>Email:   </label>
-        <br>
-        <input type="text" id="email" name="email" placeholder="50@hardlyknowher.tke">
-        <br>
-        <label for="username" text-align>Username: </label>
-        <br>
-        <input type="text" id="username" name="username" placeholder="username">
-        <br>
-        <label for="password" text-align>Password: </label>
-        <br>
-        <input type="password" id="password" name="password" placeholder="password">
-        <br>
-        <label for="confirm" text-align>Confirm Password: </label>
-        <br>
-        <input type="password" id="confirm" name="confirm" placeholder="confirm password">
-        <br>
+        <center>
+
+            <table size="75%">
+                <tr>
+                    <td><label for="email" text-align>Email*:   </label></td>
+                    <td><input type="text" id="email" name="email" placeholder="50@hardlyknowher.tke" width=300px></td>
+                </tr>
+                <tr>
+                    <td><label for="username" text-align>Username*: </label></td>
+                    <td><input type="text" id="username" name="username" placeholder="joe" width=300px></td>
+                </tr>
+                <tr>
+                    <td><label for="password" text-align>Password*: </label></td>
+                    <td><input type="password" id="password" name="password" placeholder="password" width=300px></td>
+                </tr>
+                <tr>
+                    <td><label for="confirm_password" text-align>Confirm Password*: </label></td>
+                    <td><input type="password" id="confirm_password" name="confirm_password" placeholder="password" width=300px></td>
+                </tr>
+            </table>
+
+        </center>
+
         <button type="button" name="register" class="button">Register Visitor</button>
         <button type="button" name="login" class="button">Cancel</button>
 

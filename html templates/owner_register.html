@@ -1,0 +1,203 @@
+<!Doctype HTML>
+
+
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Owner Registration</title>
+
+    <style>
+        #title {
+            text-align:center;
+            padding:40px;
+            color: #edf5e1;
+            text-shadow: 2px 2px #000000;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+            font-size: 3em;
+
+        }
+
+        body {
+            background-color: #5cdb95;
+        }
+
+        form {
+            text-align:center;
+
+        }
+
+        .button{
+            background-color: #edf5e1;
+            border: none;
+            color: #000000;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        div {
+
+            border-radius: 5px;
+            padding: 20px;
+
+        }
+
+        input[type=text].text1 {
+            width: 400px;
+            padding: 20px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        input[type=text].text2 {
+            width: 95px;
+            padding: 20px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        input[type=password] {
+            width: 400px;
+            padding: 20px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        label {
+            padding: 5px;
+            font-family: Open Sans, Arial;
+            font-weight: 200;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+<h1 id="title"><strong>New Owner Registration</strong></h1>
+<div>
+
+    <form>
+        <center>
+
+            <table size="75%">
+                <tr>
+                    <td><label for="email" text-align>Email*: </label></td>
+                    <td><input type="text" id="email" name="email" placeholder="50@hardlyknowher.tke" class="text1"></td>
+                </tr>
+                <tr>
+                    <td><label for="username" text-align>Username*: </label></td>
+                    <td><input type="text" id="username" name="username" placeholder="joe" class="text1"></td>
+                </tr>
+                <tr>
+                    <td><label for="password" text-align>Password*: </label></td>
+                    <td><input type="password" id="password" name="password" placeholder="password" class="text1"></td>
+                </tr>
+                <tr>
+                    <td><label for="confirm_password" text-align>Confirm Password*: </label></td>
+                    <td><input type="password" id="confirm_password" name="confirm_password" placeholder="password" class="text1"></td>
+                </tr>
+                <tr>
+                    <td><label for="property_name" text-align>Property Name*: </label></td>
+                    <td><input type="text" id="property_name" name="property_name" placeholder="Anarchy Acres" class="text1"></td>
+                </tr>
+                <tr>
+                    <td><label for="street_addr" text-align>Street Address*: </label></td>
+                    <td><input type="text" id="street_addr" name="street_addr" placeholder="159 5th Street NW" class="text1"></td>
+                </tr>
+            </table>
+            <table size="75%">
+
+                <tr>
+                    <td><label for="city" text-align>City*: </label></td>
+                    <td><input type="text" id="city" name="city" placeholder="Atlanta" class="text2"></td>
+                    <td><label for="zipcode" text-align>Zip*: </label></td>
+                    <td><input type="text" id="zipcode" name="zipcode" placeholder="30313" class="text2"></td>
+                    <td><label for="acres" text-align>Acres*: </label></td>
+                    <td><input type="text" id="acres" name="acres" placeholder="100" class="text2"></td>
+                </tr>
+                <tr>
+                    <td><label for="prop_type" text-align>Property Type*: </label></td>
+                    <td>
+                        <select id="prop_type">
+                            <option value="garden">Garden</option>
+                            <option value="orchard">Orchard</option>
+                            <option value="farm">Farm</option>
+                        </select>
+                    </td>
+
+                    <td><label for="animal_type" text-align>Animal*: </label></td>
+                    <td>
+                        <select id="animal_type">
+                            <option value="pig">Pig</option>
+                            <option value="cow">Cow</option>
+                            <option value="chicken">Chicken</option>
+                        </select>
+                    </td>
+
+                    <td><label for="crop_type" text-align>Crop*: </label></td>
+                    <td>
+                        <select id="crop_type">
+                            <option value="fruit">Fruit</option>
+                            <option value="vegetables">Vegetable</option>
+                            <option value="nut">Nut</option>
+                            <option value="flower">Flower</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="is_public" text-align>Public?*: </label></td>
+                    <td>
+                        <select id="is_public">
+                            <option value="is_public">Yes</option>
+                            <option value="not_public">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="is_commercial" text-align>Commercial?*: </label></td>
+                    <td>
+                        <select id="is_commercial">
+                            <option value="is_commercial">Yes</option>
+                            <option value="not_commercial">No</option>
+                        </select>
+                    </td>
+                </tr>
+
+            </table>
+        </center>
+        <br>
+        <button type="button" name="registerOwner" class="button">Register Owner</button>
+        <button type="button" name="Cancel" class="button">Cancel</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
