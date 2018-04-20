@@ -13,7 +13,7 @@ if (!(isset($_SESSION['username']) && $_SESSION['logged_in'] == 1)) {
     //TODO redirect to login page
 }
 
-$owner_username = $_SESSION['username'];
+$admin_username = $_SESSION['username'];
 
 $property_id = $_GET['property_id'];
 
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = $mysqli->query("SELECT Name FROM Property WHERE Name = $name AND NOT (ID = $property_id)");
         if (mysqli_num_rows($result) == 0) {
             $result = $mysqli->query("UPDATE Property SET Name = $name, Street = $address, City = $city, Zip = $zip,
-                        Size = $size, IsPublic = $public, IsCommerical = $commercial, ApprovedBy = NULL WHERE ID = $property_id");
+                        Size = $size, IsPublic = $public, IsCommerical = $commercial, ApprovedBy = $admin_username WHERE ID = $property_id");
 
             foreach ($item as $deleted_items) {
                 $delete_result = $mysqli->query("DELETE FROM Has WHERE PropertyID = $property_id AND ItemName = $item");
