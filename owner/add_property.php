@@ -25,7 +25,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
     $property_type = $_POST['property_type'];
     $is_public = ($_POST['is_public'] == "Yes" ? true : false);
     $is_commercial = ($_POST['is_commercial'] == "Yes" ? true : false);
-    $farm_items = $_POST['farm_items'];
+    $farm_items = explode(",", $_POST['farm_items']);
 
     $result = $mysqli->query("SELECT Count(*) FROM Property WHERE PropertyName=$property_name");
     if (mysqli_num_rows($result) > 0) {

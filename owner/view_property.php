@@ -16,10 +16,10 @@ $owner_username = $_SESSION['username'];
 
 $property_id = $_GET['pid'];
 
-$property = $mysqli->query("SELECT DISTINCT Property.Name, Property.Street, Property.City,
-                Property.Zip, Property.Size, Property.PropertyType, Property.IsPublic, Property.IsCommercial, Property.ID,
-                COUNT(*), AVG(Visit.Rating) FROM Property, Visit WHERE Property.ID = $property_id AND 
-                Visit.PropertyID = $property_id GROUP BY Property.ID ");
+$property = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Street, Property.City,
+                Property.Zip, Property.Size, Property.PropertyType, Property.IsPublic, Property.ApprovedBy, Property.IsCommercial, Property.ID,
+                COUNT(Visit.PropertyID) AS Visits, AVG(Visit.Rating) AS Rating FROM Property  LEFT JOIN Visit ON (Property.ID = Visit.PropertyID) GROUP BY Property.ID) AS PropertyVisit 
+                WHERE ID = $property_id ");
 
 $farmitems = $mysqli->query("SELECT * FROM FarmItem WHERE FarmItem.Name IN (SELECT Has.FarmItemName FROM HAS WHERE Has.PropertyID = $property_id)");
 
