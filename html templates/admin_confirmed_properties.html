@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Visitor Properties</title>
+    <title>Confirmed Properties</title>
 
     <style>
         #title {
@@ -89,7 +89,7 @@
 
 
 <body>
-<h1 id="title"><strong>Welcome VISITOR_USERNAME!</strong></h1>
+<h1 id="title"><strong>Confirmed Properties</strong></h1>
 
 
 <table size="100%" id="property_table">
@@ -103,7 +103,6 @@
         <th>Type</th>
         <th>Public</th>
         <th>Commercial</th>
-        <th>ID</th>
         <th>isValid</th>
         <th>Visits</th>
         <th>Avg. Rating</th>
@@ -112,37 +111,25 @@
 </table>
 <br>
 
-<table width="100%">
-
-    <tr>
-        <td>
-            <select class="owner_options">
-                <option>Name</option>
-                <option>Address</option>
-                <option>City</option>
-                <option>Zip</option>
-                <option>Size</option>
-                <option>Type</option>
-                <option>ID</option>
-                <option>Visits</option>
-                <option>Average Rating</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td><input type="text" id="search_input" name="search_input" placeholder="Search Term" class="owner_options"></td>
-    </tr>
-    <tr>
-        <td><button type="button" class="button">Search Properties</button></td>
-        <td><button type="button" class="button">View Visit History</button></td>
-        <td><button type="button" class="button">Log Out</button></td>
-    </tr>
-
-
-
-</table>
-
-
+<center>
+    <select class="owner_options">
+        <option>Name</option>
+        <option>Address</option>
+        <option>City</option>
+        <option>Zip</option>
+        <option>Size</option>
+        <option>Type</option>
+        <option>ID</option>
+        <option>Visits</option>
+        <option>Average Rating</option>
+    </select>
+    <br>
+    <input type="text" id="search_input" name="search_input" placeholder="Search Term" class="owner_options">
+    <br>
+    <button type="button" class="button">Search Properties</button>
+    <br>
+    <button type="button" class="button">Back</button>
+</center>
 
 </body>
 </html>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdc9ea9e-e3ea-496c-b977-a810f6ddae82" name="Default" comment="owner_properties added">
-      <change afterPath="$PROJECT_DIR$/html templates/visitor_properties.html" afterDir="false" />
+    <list default="true" id="bdc9ea9e-e3ea-496c-b977-a810f6ddae82" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/html templates/admin_confirmed_properties.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html templates/owner_properties.html" beforeDir="false" afterPath="$PROJECT_DIR$/html templates/owner_properties.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html templates/visitor_properties.html" beforeDir="false" afterPath="$PROJECT_DIR$/html templates/visitor_properties.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,17 +37,26 @@
       <file leaf-file-name="owner_properties.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html templates/owner_properties.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="148" selection-end-column="7" />
+            <state relative-caret-position="165">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="visitor_properties.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="visitor_properties.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html templates/visitor_properties.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+            <state relative-caret-position="115">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_confirmed_properties.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html templates/admin_confirmed_properties.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -53,7 +64,7 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-404">
+            <state relative-caret-position="-432">
               <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
             </state>
           </provider>
@@ -107,7 +118,9 @@
         <option value="$PROJECT_DIR$/user/registervisitor.php" />
         <option value="$PROJECT_DIR$/html templates/add_new_property.html" />
         <option value="$PROJECT_DIR$/owner/add_property.php" />
+        <option value="$PROJECT_DIR$/html templates/owner_properties.html" />
         <option value="$PROJECT_DIR$/html templates/visitor_properties.html" />
+        <option value="$PROJECT_DIR$/html templates/admin_confirmed_properties.html" />
       </list>
     </option>
   </component>
@@ -190,26 +203,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.visitor_properties.html">
+  <component name="RunManager" selected="JavaScript Debug.admin_confirmed_properties.html">
     <configuration name="add_new_property.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/CS4400-Phase3/html templates/add_new_property.html" />
-    <configuration name="login.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/CS4400-Phase3/html templates/login.html" />
+    <configuration name="admin_confirmed_properties.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CS4400-Phase3/html templates/admin_confirmed_properties.html" />
     <configuration name="owner_register.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/CS4400-Phase3/html templates/owner_register.html" />
     <configuration name="visitor.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/CS4400-Phase3/html templates/visitor.html" />
     <configuration name="visitor_properties.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CS4400-Phase3/html templates/visitor_properties.html" />
     <list>
-      <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="JavaScript Debug.visitor.html" />
       <item itemvalue="JavaScript Debug.owner_register.html" />
       <item itemvalue="JavaScript Debug.add_new_property.html" />
       <item itemvalue="JavaScript Debug.visitor_properties.html" />
+      <item itemvalue="JavaScript Debug.admin_confirmed_properties.html" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.admin_confirmed_properties.html" />
         <item itemvalue="JavaScript Debug.visitor_properties.html" />
         <item itemvalue="JavaScript Debug.add_new_property.html" />
         <item itemvalue="JavaScript Debug.owner_register.html" />
         <item itemvalue="JavaScript Debug.visitor.html" />
-        <item itemvalue="JavaScript Debug.login.html" />
       </list>
     </recent_temporary>
   </component>
@@ -257,11 +270,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524344414944</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="visitor_properties added">
+      <created>1524344692695</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1524344692695</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27498000" />
+    <option name="totallyTimeSpent" value="28188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="178" y="23" width="1370" height="817" extended-state="0" />
@@ -310,16 +330,10 @@
     <MESSAGE value="owner registration pushed" />
     <MESSAGE value="fixed visitor registration" />
     <MESSAGE value="owner_properties added" />
-    <option name="LAST_COMMIT_MESSAGE" value="owner_properties added" />
+    <MESSAGE value="visitor_properties added" />
+    <option name="LAST_COMMIT_MESSAGE" value="visitor_properties added" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/user/registerowner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/owner/add_property.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-32">
@@ -544,13 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-404">
-          <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/manage_property.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -607,24 +614,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html templates/visitor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/registervisitor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html templates/add_new_property.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="176" column="17" lean-forward="true" selection-start-line="176" selection-start-column="17" selection-end-line="176" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -656,17 +649,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/html templates/add_new_property.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="176" column="17" lean-forward="true" selection-start-line="176" selection-start-column="17" selection-end-line="176" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html templates/owner_properties.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="148" selection-end-column="7" />
+        <state relative-caret-position="165">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html templates/visitor_properties.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+        <state relative-caret-position="115">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html templates/visitor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-432">
+          <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html templates/admin_confirmed_properties.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
         </state>
       </provider>
     </entry>
