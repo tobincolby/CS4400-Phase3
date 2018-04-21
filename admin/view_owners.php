@@ -9,8 +9,10 @@
 require "../include/connection.php";
 
 
-if (!(isset($_SESSION['username']) && $_SESSION['logged_in'] == 1)) {
+if (!(isset($_SESSION['username']) && $_SESSION['logged_in'] != 1)) {
     //TODO redirect to login page
+    header("Location: ../user/login.php");
+    exit();
 }
 
 $admin_username = $_SESSION['username'];
