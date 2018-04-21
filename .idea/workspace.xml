@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdc9ea9e-e3ea-496c-b977-a810f6ddae82" name="Default" comment="owner_properties added">
-      <change afterPath="$PROJECT_DIR$/html templates/visitor_properties.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visitor/view_properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/visitor/view_properties.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,47 +13,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="visitor.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html templates/visitor.html">
+      <file leaf-file-name="view_properties.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/visitor/view_properties.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="235" column="67" lean-forward="true" selection-start-line="235" selection-start-column="67" selection-end-line="235" selection-end-column="67" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#td#1;n#tr#1;n#table#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#2;n#tr#1;n#table#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_property.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/owner/add_property.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="n#style#0;n#label#0;n#td#2;n#tr#1;n#table#1;n#center#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#td#3;n#tr#1;n#table#1;n#center#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_new_property.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html templates/add_new_property.html">
+      <file leaf-file-name="view_property.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/owner/view_property.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="176" column="17" lean-forward="true" selection-start-line="176" selection-start-column="17" selection-end-line="176" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="owner_properties.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html templates/owner_properties.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="148" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="visitor_properties.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/html templates/visitor_properties.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html templates/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-404">
-              <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -62,8 +51,26 @@
       <file leaf-file-name="owner_register.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html templates/owner_register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2910">
-              <caret line="194" column="89" lean-forward="true" selection-start-line="194" selection-start-column="89" selection-end-line="194" selection-end-column="89" />
+            <state relative-caret-position="-2436">
+              <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registerowner.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/registerowner.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="51" column="17" lean-forward="true" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="visitor_properties.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html templates/visitor_properties.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -91,7 +98,6 @@
         <option value="$PROJECT_DIR$/owner/owner_properties.php" />
         <option value="$PROJECT_DIR$/owner/other_owner_properties.php" />
         <option value="$PROJECT_DIR$/owner/view_property.php" />
-        <option value="$PROJECT_DIR$/visitor/view_properties.php" />
         <option value="$PROJECT_DIR$/owner/manage_property.php" />
         <option value="$PROJECT_DIR$/admin/confirmed_properties.php" />
         <option value="$PROJECT_DIR$/admin/unconfirmed_properties.php" />
@@ -108,6 +114,7 @@
         <option value="$PROJECT_DIR$/html templates/add_new_property.html" />
         <option value="$PROJECT_DIR$/owner/add_property.php" />
         <option value="$PROJECT_DIR$/html templates/visitor_properties.html" />
+        <option value="$PROJECT_DIR$/visitor/view_properties.php" />
       </list>
     </option>
   </component>
@@ -136,28 +143,38 @@
         <subPane>
           <expand>
             <path>
-              <item name="CS4400-Phase3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS4400-Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Phase3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="CS4400-Phase3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS4400-Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Phase3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Phase3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="html templates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="CS4400-Phase3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS4400-Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Phase3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="include" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="CS4400-Phase3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS4400-Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Phase3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="owner" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="CS4400-Phase3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS4400-Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Phase3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Phase3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phase3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="visitor" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -261,24 +278,24 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27498000" />
+    <option name="totallyTimeSpent" value="28557000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="178" y="23" width="1370" height="817" extended-state="0" />
+    <frame x="10" y="43" width="1260" height="672" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963504" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -488,13 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/registerowner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/logout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -504,22 +514,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html templates/owner_register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2910">
-          <caret line="194" column="89" lean-forward="true" selection-start-line="194" selection-start-column="89" selection-end-line="194" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visitor/view_properties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="40" column="80" selection-start-line="40" selection-start-column="80" selection-end-line="40" selection-end-column="80" />
+        <state relative-caret-position="-2436">
+          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/owner/view_property.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -621,13 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html templates/add_new_property.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="176" column="17" lean-forward="true" selection-start-line="176" selection-start-column="17" selection-end-line="176" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/view_owners.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -651,8 +647,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/owner/add_property.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="181" column="84" lean-forward="true" selection-start-line="181" selection-start-column="84" selection-end-line="181" selection-end-column="84" />
+        <state relative-caret-position="405">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#td#2;n#tr#1;n#table#1;n#center#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#td#3;n#tr#1;n#table#1;n#center#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -663,10 +663,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/html templates/add_new_property.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="176" column="17" lean-forward="true" selection-start-line="176" selection-start-column="17" selection-end-line="176" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/registerowner.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="51" column="17" lean-forward="true" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html templates/visitor_properties.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+        <state relative-caret-position="330">
+          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visitor/view_properties.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="235" column="67" lean-forward="true" selection-start-line="235" selection-start-column="67" selection-end-line="235" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#1;n#table#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#2;n#tr#1;n#table#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
