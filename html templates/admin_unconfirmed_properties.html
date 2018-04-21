@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unconfirmed Properties</title>
+
+    <style>
+        #title {
+            text-align:center;
+            padding:40px;
+            color: #edf5e1;
+            text-shadow: 2px 2px #000000;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+            font-size: 3em;
+
+        }
+
+        #property_table {
+
+            font-family: Open Sans, Arial;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #property_table td, #property_table th {
+
+            border: 1px solid #000000;
+            padding: 8px;
+
+        }
+
+        #property_table tr:hover {background-color: #ddd;}
+
+        #property_table th {
+
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+
+        }
+
+        body {
+            background-color: #5cdb95;
+        }
+
+        .button{
+            width: 200px;
+            background-color: #edf5e1;
+            border: none;
+            color: #000000;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+
+        div {
+
+            border-radius: 5px;
+            padding: 20px;
+
+        }
+
+        input[type=text] {
+            padding: 10px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        .owner_options {
+            width: 200px;
+        }
+
+
+    </style>
+</head>
+
+
+<body>
+<h1 id="title"><strong>Unconfirmed Properties</strong></h1>
+
+
+<table size="100%" id="property_table">
+
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zip Code</th>
+        <th>Size</th>
+        <th>Type</th>
+        <th>Public</th>
+        <th>Commercial</th>
+        <th>isValid</th>
+        <th>Visits</th>
+        <th>Avg. Rating</th>
+    </tr>
+
+</table>
+<br>
+
+<center>
+    <select class="owner_options">
+        <option>Name</option>
+        <option>Address</option>
+        <option>City</option>
+        <option>Zip</option>
+        <option>Size</option>
+        <option>Type</option>
+        <option>ID</option>
+        <option>Visits</option>
+        <option>Average Rating</option>
+    </select>
+    <br>
+    <input type="text" id="search_input" name="search_input" placeholder="Search Term" class="owner_options">
+    <br>
+    <button type="button" class="button">Search Properties</button>
+    <br>
+    <button type="button" class="button">Back</button>
+</center>
+
+</body>
+</html>
