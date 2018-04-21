@@ -1,0 +1,238 @@
+<!Doctype HTML>
+
+
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Manage Property</title>
+
+    <style>
+        #title {
+            text-align:center;
+            padding:40px;
+            color: #edf5e1;
+            text-shadow: 2px 2px #000000;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+            font-size: 3em;
+
+        }
+
+        #animal_crop_table {
+
+            font-family: Open Sans, Arial;
+            border-collapse: collapse;
+            width: 250px;
+        }
+
+        #animal_crop_table td, #animal_crop_table th {
+
+            border: 1px solid #000000;
+            padding: 8px;
+
+        }
+
+        #animal_crop_table tr:hover {background-color: #ddd;}
+
+        #animal_crop_table th {
+
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+
+        }
+
+        body {
+            background-color: #5cdb95;
+        }
+
+        form {
+            text-align:center;
+
+        }
+
+        .button{
+            background-color: #edf5e1;
+            border: none;
+            color: #000000;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        div {
+
+            border-radius: 5px;
+            padding: 20px;
+
+        }
+
+        input[type=text] {
+            width: 400px;
+            padding: 20px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        input[type=password] {
+            width: 400px;
+            padding: 20px 10px;
+            margin: 8px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Open Sans, Arial;
+            font-weight: 300;
+        }
+
+        label {
+            padding: 5px;
+            font-family: Open Sans, Arial;
+            font-weight: 200;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+<h1 id="title"><strong>Manage PROPERTY_NAME</strong></h1>
+<div>
+
+    <form>
+
+        <center>
+
+            <table size="75%">
+                <tr>
+                    <td><label for="name" text-align>Property Name: </label></td>
+                    <td><input type="text" id="name" name="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="addr" text-align>Address: </label></td>
+                    <td><input type="text" id="addr" name="addr"></td>
+                </tr>
+                <tr>
+                    <td><label for="city" text-align>City: </label></td>
+                    <td><input type="text" id="city" name="city"></td>
+                </tr>
+                <tr>
+                    <td><label for="zip" text-align>Zip Code: </label></td>
+                    <td><input type="text" id="zip" name="zip"></td>
+                </tr>
+                <tr>
+                    <td><label for="size" text-align>Size (Acres): </label></td>
+                    <td><input type="text" id="size" name="size"></td>
+                </tr>
+                <br>
+                <br>
+                <tr>
+                    <td><label for="prop_type">Type: </label></td>
+                    <td><label id="prop_type">ENTER_PROPERTY_TYPE </label></td>
+                </tr>
+                <tr>
+                    <td><label for="prop_id">ID: </label></td>
+                    <td><label id="prop_id">ENTER_PROPERTY_ID </label></td>
+                </tr>
+                <tr>
+                    <td><label for="is_public" text-align>Public: </label></td>
+                    <td>
+                        <select id="is_public">
+                            <option value="is_public">True</option>
+                            <option value="not_public">False</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="is_commercial" text-align>Commercial: </label></td>
+                    <td>
+                        <select id="is_commercial">
+                            <option value="is_commercial">True</option>
+                            <option value="not_commercial">False</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+
+            <table id="animal_crop_table">
+
+                <tr>
+                    <th>Animals</th>
+                </tr>
+
+            </table>
+
+            <br>
+
+            <table id="animal_crop_table">
+
+                <tr>
+                    <th>Crops</th>
+                </tr>
+
+            </table>
+
+            <br>
+
+            <table>
+
+                <tr>
+                    <td><label for="select_animal" text-align>Add New Animal: </label></td>
+                    <td>
+                        <select id="select_animal">
+                            <option value="pig">Pig</option>
+                            <option value="cow">Cow</option>
+                            <option value="chicken">Chicken</option>
+                        </select>
+                    </td>
+                    <td><button type="button" class="button">Add Animal</button></td>
+                </tr>
+                <tr>
+                    <td><label for="select_crop" text-align>Add New Crop: </label></td>
+                    <td>
+                        <select id="select_crop">
+                            <option value="fruit">Fruit</option>
+                            <option value="vegetable">Vegetable</option>
+                            <option value="nut">Nut</option>
+                            <option value="flower">Flower</option>
+                        </select>
+                    </td>
+                    <td><button type="button" class="button">Add Crop</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="button">Delete Property</button></td>
+                    <td><button type="button" class="button">Save Changes</button></td>
+                    <td><button type="button" class="button">Back (Don't Save)</button></td>
+                </tr>
+
+            </table>
+
+        </center>
+
+    </form>
+
+</div>
+
+</body>
+
+
+</html>
