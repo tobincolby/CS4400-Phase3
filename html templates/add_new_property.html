@@ -129,9 +129,9 @@
                     <td><label for="prop_type" text-align>Property Type*: </label></td>
                     <td>
                         <select id="prop_type">
-                            <option value="garden">Garden</option>
-                            <option value="orchard">Orchard</option>
-                            <option value="farm">Farm</option>
+                            <option value="GARDEN">Garden</option>
+                            <option value="ORCHARD">Orchard</option>
+                            <option value="FARM">Farm</option>
                         </select>
                     </td>
 
@@ -158,8 +158,8 @@
                     <td><label for="is_public" text-align>Public?*: </label></td>
                     <td>
                         <select id="is_public">
-                            <option value="is_public">Yes</option>
-                            <option value="not_public">No</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
                         </select>
                     </td>
                 </tr>
@@ -167,8 +167,8 @@
                     <td><label for="is_commercial" text-align>Commercial?*: </label></td>
                     <td>
                         <select id="is_commercial">
-                            <option value="is_commercial">Yes</option>
-                            <option value="not_commercial">No</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
                         </select>
                     </td>
                 </tr>
@@ -176,7 +176,7 @@
             </table>
         </center>
         <br>
-        <button type="button" name="add_property" class="button">Add Property</button>
+        <button type="submit" name="add_property" class="button">Add Property</button>
         <button type="button" name="Cancel" class="button">Cancel</button>
 
     </form>
