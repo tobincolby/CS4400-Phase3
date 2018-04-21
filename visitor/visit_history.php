@@ -29,3 +29,35 @@ if (isset($_GET['sort'])) {
 }
 
 ?>
+
+<!Doctype HTML>
+<html>
+<head>
+    <title>Visit History</title>
+</head>
+<body>
+<h1>Your History</h1>
+<hr>
+<table>
+    <tr>
+        <td>Name</td><td>Date Logged</td><td>Rating</td>
+    </tr>
+    <?php
+    while ($row = mysqli_fetch_assoc($visits)) {
+
+        ?>
+        <tr>
+            <td><a href="view_property.php?property_id=<?php echo $row['PropertyID']; ?>"><?php echo $row['Name']; ?></a> </td><td><?php echo $row['VisitDate']; ?></td><td><?php echo $row['Rating']; ?></td>
+        </tr>
+        <?php
+    }
+    ?>
+
+</table>
+<br>
+<a href="../user/mainpage.php">Back</a>
+
+</body>
+
+
+</html>
