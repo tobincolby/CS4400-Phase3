@@ -47,12 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $errormsg = "The name you are changing the property to already exists";
         }
-    } else if ($_POST['form'] == 'request') {
-        $new_crop = $_POST['crop_name'];
-        $crop_type = $_POST['crop_type'];
-
-        $result = $mysqli->query("INSERT INTO FarmItem VALUES ($new_crop, 0, $crop_type)");
-
     } else {
         $result = $mysqli->query("DELETE FROM Property WHERE ID = $property_id");
         //TODO add page redirect to viewing page

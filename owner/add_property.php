@@ -23,8 +23,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
     $zip = $_POST['zip'];
     $size = $_POST['size'];
     $property_type = $_POST['property_type'];
-    $is_public = ($_POST['is_public'] == "Yes" ? true : false);
-    $is_commercial = ($_POST['is_commercial'] == "Yes" ? true : false);
+    $is_public = $_POST['is_public'];
+    $is_commercial = $_POST['is_commercial'];
     $farm_items = explode(",", $_POST['farm_items']);
 
     $result = $mysqli->query("SELECT Count(*) FROM Property WHERE PropertyName=$property_name");
@@ -32,8 +32,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_msg = "Property Name Already Exists";
     } else {
 
-        $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID");
-        $new_id = mysqli_num_rows($result);
+        $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID DESC LIMIT 1");
+        $new_id = mysqli_fetch_assoc($result)["ID"] + 1;
         $result = $mysqli->query("INSERT INTO Property VALUES($new_id, $property_name, $size, $is_commercial, 
                         $is_public, $street_address, $city, $zip, $property_type, $owner_username, NULL)");
         foreach ($farm_items as $farm_item) {

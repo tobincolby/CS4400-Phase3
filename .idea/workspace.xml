@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdc9ea9e-e3ea-496c-b977-a810f6ddae82" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/confirmed_properties.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/manage_property.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/unconfirmed_properties.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/owner/manage_property.php" beforeDir="false" afterPath="$PROJECT_DIR$/owner/manage_property.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/mainpage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/manage_property.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/manage_property.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/owner/add_property.php" beforeDir="false" afterPath="$PROJECT_DIR$/owner/add_property.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/login.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +17,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="add_property.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add_property.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/owner/add_property.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="27" column="53" lean-forward="true" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+            <state relative-caret-position="281">
+              <caret line="35" column="56" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="115" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-end-line="8" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainpage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/mainpage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
         </entry>
@@ -28,8 +56,8 @@
       <file leaf-file-name="manage_property.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/owner/manage_property.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="19" lean-forward="true" selection-end-line="66" selection-end-column="2" />
+            <state relative-caret-position="-128">
+              <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -43,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage_property.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manage_property.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/manage_property.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+            <state relative-caret-position="358">
+              <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -87,7 +115,6 @@
       <list>
         <option value="$PROJECT_DIR$/html templates/login.html" />
         <option value="$PROJECT_DIR$/include/connection.php" />
-        <option value="$PROJECT_DIR$/user/login.php" />
         <option value="$PROJECT_DIR$/user/registerowner.php" />
         <option value="$PROJECT_DIR$/admin/view_visitors.php" />
         <option value="$PROJECT_DIR$/admin/view_owners.php" />
@@ -102,11 +129,13 @@
         <option value="$PROJECT_DIR$/owner/other_owner_properties.php" />
         <option value="$PROJECT_DIR$/owner/view_property.php" />
         <option value="$PROJECT_DIR$/visitor/view_properties.php" />
-        <option value="$PROJECT_DIR$/owner/add_property.php" />
         <option value="$PROJECT_DIR$/owner/manage_property.php" />
         <option value="$PROJECT_DIR$/admin/confirmed_properties.php" />
         <option value="$PROJECT_DIR$/admin/unconfirmed_properties.php" />
         <option value="$PROJECT_DIR$/admin/manage_property.php" />
+        <option value="$PROJECT_DIR$/user/login.php" />
+        <option value="$PROJECT_DIR$/user/mainpage.php" />
+        <option value="$PROJECT_DIR$/owner/add_property.php" />
       </list>
     </option>
   </component>
@@ -248,7 +277,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16881000" />
+    <option name="totallyTimeSpent" value="20156000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="43" width="1260" height="672" extended-state="0" />
@@ -299,13 +328,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="fixed visitor registration" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/user/logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visitor/view_property.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -509,13 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/logout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -548,13 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -614,13 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/owner/add_property.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="27" column="53" lean-forward="true" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/owner/other_owner_properties.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
@@ -635,6 +636,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/owner/manage_property.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-128">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/confirmed_properties.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -642,17 +650,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/owner/manage_property.php">
+    <entry file="file://$PROJECT_DIR$/admin/manage_property.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" lean-forward="true" selection-end-line="66" selection-end-column="2" />
+        <state relative-caret-position="358">
+          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/manage_property.php">
+    <entry file="file://$PROJECT_DIR$/html templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+        <state>
+          <caret selection-end-line="115" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/mainpage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/owner/add_property.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="35" column="56" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
         </state>
       </provider>
     </entry>
