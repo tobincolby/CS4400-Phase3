@@ -25,7 +25,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
     $property_type = $_POST['property_type'];
     $is_public = $_POST['is_public'];
     $is_commercial = $_POST['is_commercial'];
-    if (isset($_POST['animal_type'])) {
+    if ($property_type == 'FARM') {
         $farm_items = array($_POST['animal_type'], $_POST['crop_type']);
     } else {
         $farm_items = array($_POST['crop_type']);

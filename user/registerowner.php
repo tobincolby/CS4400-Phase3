@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
 
             $newpass = md5($password);
-            $result = $mysqli->query("INSERT INTO User VALUES ($username, $email, $newpass, 'OWNER')");
 
             //Add the Owner's Property
             $property_name = $_POST['property_name'];
@@ -36,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $property_type = $_POST['property_type'];
             $is_public = ($_POST['is_public'] == "Yes" ? true : false);
             $is_commercial = ($_POST['is_commercial'] == "Yes" ? true : false);
-            if (isset($_POST['animal_type'])) {
+            if ($property_type == 'FARM') {
                 $farm_items = array($_POST['animal_type'], $_POST['crop_type']);
             } else {
                 $farm_items = array($_POST['crop_type']);
@@ -45,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (mysqli_num_rows($result) > 0) {
                 $error_msg = "Property Name Already Exists";
             } else {
+                $result = $mysqli->query("INSERT INTO User VALUES ($username, $email, $newpass, 'OWNER')");
 
                 $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID");
                 $new_id = mysqli_num_rows($result);
@@ -226,6 +226,11 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
 
 
 <h1 id="title"><strong>New Owner Registration</strong></h1>
+<?php if ($error_msg != "") {
+  echo "<h3>".$error_msg."</h3>";
+}
+
+?>
 <div>
 
     <form id="registerowner" name="registerowner" method="post" action="registerowner.php">
