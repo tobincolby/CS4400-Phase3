@@ -20,8 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['form'] == 'DELETEACCT') {
         $username = $_POST['username'];
         $result = $mysqli->query("DELETE FROM User WHERE User.Username = $username");
-        $owners = $mysqli->query("SELECT User.Username, User.Email, Count(*) AS Properties FROM User, Property WHERE User.UserType = 'OWNER'
-          AND User.Username = Property.Owner GROUP BY User.Username");
+        $owners = $mysqli->query("SELECT * FROM (SELECT User.Username, User.Email, Count(Property.ID) AS Properties, 
+          UserType FROM User LEFT JOIN Property ON User.Username = Property.Owner GROUP BY User.Username) 
+          AS OwnerProperties WHERE UserType = 'OWNER'");
     }
 
 } else {
@@ -39,8 +40,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sort_direction = $_GET['sort_direction'];
     }
 
-    $owners = $mysqli->query("SELECT User.Username, User.Email, Count(*) AS Properties FROM User, Property WHERE User.UserType = 'OWNER'
-          AND User.Username = Property.Owner $searchtype $searchtext GROUP BY User.Username $sort_type $sort_direction");
+    $owners = $mysqli->query("SELECT * FROM (SELECT User.Username, User.Email, Count(Property.ID) AS Properties, 
+          UserType FROM User LEFT JOIN Property ON User.Username = Property.Owner GROUP BY User.Username) 
+          AS OwnerProperties WHERE UserType = 'OWNER' $searchtype $searchtext $sort_type $sort_direction");
 }
 
 ?>
+
+<!Doctype HTML>
+
+<html>
+<head>
+    <title>Visitors in the System</title>
+    <script>
+        function onSearchClick() {
+            var searchtype = document.getElementById("searchtype").value;
+            var searchtext = document.getElementById("searchtext").value;
+            window.location.replace("view_visitors.php?searchtype=" + searchtype + "&searchtext="+searchtext);
+        }
+    </script>
+</head>
+<body>
+
+<center>
+    <h1>Owners in the System</h1>
+    <table>
+        <tr><td>Username</td><td>Email</td><td>Properties</td><td>Delete Account?</td></tr>
+        <?php
+        while ($row = mysqli_fetch_assoc($owners)) {
+            ?>
+            <tr>
+                <td><?php echo $row['Username']; ?></td>
+                <td><?php echo $row['Email']; ?></td>
+                <td><?php echo $row['Properties']; ?></td>
+                <td>
+                    <form id="deleteacct" name="deleteacct" method="post" action="view_owners.php">
+                        <input name="form" id="form" value="DELETEACCT" type="hidden"/>
+                        <input name="username" id="username" value="<?php echo $row['Username']; ?>" type="hidden"/>
+                        <input type="submit" value="Delete Account"/>
+
+                    </form>
+                </td>
+
+
+
+            </tr>
+
+            <?php
+        }
+        ?>
+
+    </table>
+
+    <br>
+    <h3>Search</h3>
+    <br>
+    <select name="searchtype" id="searchtype">
+        <option value="Username">Username</option>
+        <option value="Email">Email</option>
+    </select>
+    <br>
+    <input type="text" id="searchtext" name="searchtext"/>
+    <button type="button" value="Search" onclick="onSearchClick()"/>
+
+    <br>
+    <a href="../user/mainpage.php">Back</a>
+
+</body>
+
+
+
+</center>
+
+
+</body>
+
+
+</html>

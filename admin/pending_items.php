@@ -35,3 +35,66 @@ $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved =
 
 
 ?>
+
+<!Doctype HTML>
+
+<html>
+<head>
+    <title>Approved Farm Items</title>
+
+    <script>
+        function onSearchClick() {
+            var searchtype = document.getElementById("searchtype").value;
+            var searchtext = document.getElementById("searchtext").value;
+            window.location.replace("approved_items.php?searchtype=" + searchtype + "&searchtext="+searchtext);
+        }
+    </script>
+</head>
+
+<body>
+<center>
+    <h1>Approved Farm Items</h1>
+    <table>
+        <tr>
+            <td>Name</td><td>Type</td><td>X</td><td>Approve?</td>
+        </tr>
+        <?php
+        while ($row = mysqli_fetch_assoc($farm_items)) {
+
+            ?>
+            <tr>
+                <td><?php echo $row['Name']; ?></td><td><?php echo $row['Type']; ?></td>
+                <td>
+                    <form name="delete" action="approved_items.php" method="post">
+                        <input type="hidden" value="DELETE" name="form" id="form"/>
+                        <input type="hidden" value="<?php echo $row['name']; ?>" name="name" id="name"/>
+                        <input type="submit" value="Delete"/>
+                    </form>
+                </td>
+                <td>
+                    <form name="approve" action="approved_items.php" method="post">
+                        <input type="hidden" value="APPROVE" name="form" id="form"/>
+                        <input type="hidden" value="<?php echo $row['name']; ?>" name="name" id="name"/>
+                        <input type="submit" value="Approve"/>
+                    </form>
+                </td>
+            </tr>
+            <?php
+        }
+        ?>
+
+
+    </table>
+
+
+</center>
+<br>
+<a href="../user/mainpage.php">Back</a>
+
+</body>
+
+
+
+
+
+</html>
