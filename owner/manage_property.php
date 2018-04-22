@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_num_rows($result) == 0) {
             $result = $mysqli->query("UPDATE Property SET Name = '$name', Street = '$address', City = '$city', Zip = $zip,
                         Size = $size, IsPublic = $public, IsCommerical = $commercial, ApprovedBy = NULL WHERE ID = $property_id");
-
+            $result = $mysqli->query("DELETE FROM Visit WHERE PropertyID = $property_id");
             foreach ($deleted_items as $item) {
                 if ($item != "0")
                 $delete_result = $mysqli->query("DELETE FROM Has WHERE PropertyID = $property_id AND ItemName = '$item'");

@@ -15,53 +15,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_pass = $_POST['confirm_password'];
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false && strlen($password) >= 8) {
 
-    if ($password != $confirm_pass) {
-        $error_msg = "Passwords Don't Match";
-    } else {
-        $result = $mysqli->query("SELECT username FROM User WHERE Username='$username' OR Email='$email'");
-        if (mysqli_num_rows($result) != 0) {
-            $error_msg = "Email/Username Already exists";
+        if ($password != $confirm_pass) {
+            $error_msg = "Passwords Don't Match";
         } else {
-
-            $newpass = md5($password);
-
-            //Add the Owner's Property
-            $property_name = $_POST['property_name'];
-            $street_address = $_POST['address'];
-            $city = $_POST['city'];
-            $zip = $_POST['zip'];
-            $size = $_POST['size'];
-            $property_type = $_POST['property_type'];
-            $is_public = $_POST['is_public'];
-            $is_commercial = $_POST['is_commercial'];
-            if ($property_type == 'FARM') {
-                $farm_items = array($_POST['animal_type'], $_POST['farm_type']);
-            } else if ($property_type == 'GARDEN') {
-                $farm_items = array($_POST['garden_type']);
+            $result = $mysqli->query("SELECT username FROM User WHERE Username='$username' OR Email='$email'");
+            if (mysqli_num_rows($result) != 0) {
+                $error_msg = "Email/Username Already exists";
             } else {
-                $farm_items = array($_POST['orchard_type']);
-            }
-            $result = $mysqli->query("SELECT Name FROM Property WHERE Name='$property_name'");
-            if (mysqli_num_rows($result) > 0) {
-                $error_msg = "Property Name Already Exists";
-            } else {
-                $result = $mysqli->query("INSERT INTO User VALUES ('$username', '$email', '$newpass', 'OWNER')");
 
-                $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID DESC LIMIT 1");
-                $new_id = mysqli_fetch_assoc($result)["ID"] + 1;
-                $owner_id = $username;
-                $result = $mysqli->query("INSERT INTO Property (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)
-                                                VALUES ('$new_id', '$property_name', '$size', '$is_commercial', '$is_public', '$street_address', '$city', '$zip', '$property_type', '$owner_id', NULL)");
-                foreach ($farm_items as $farm_item) {
-                    $result = $mysqli->query("INSERT INTO Has VALUES($new_id, '$farm_item')");
+                $newpass = md5($password);
+
+                //Add the Owner's Property
+                $property_name = $_POST['property_name'];
+                $street_address = $_POST['address'];
+                $city = $_POST['city'];
+                $zip = $_POST['zip'];
+                $size = $_POST['size'];
+                $property_type = $_POST['property_type'];
+                $is_public = $_POST['is_public'];
+                $is_commercial = $_POST['is_commercial'];
+                if ($property_type == 'FARM') {
+                    $farm_items = array($_POST['animal_type'], $_POST['farm_type']);
+                } else if ($property_type == 'GARDEN') {
+                    $farm_items = array($_POST['garden_type']);
+                } else {
+                    $farm_items = array($_POST['orchard_type']);
                 }
-                header("Location: login.php"); /* Redirect browser */
-                exit();
+                $result = $mysqli->query("SELECT Name FROM Property WHERE Name='$property_name'");
+                if (mysqli_num_rows($result) > 0) {
+                    $error_msg = "Property Name Already Exists";
+                } else {
+                    $result = $mysqli->query("INSERT INTO User VALUES ('$username', '$email', '$newpass', 'OWNER')");
+
+                    $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID DESC LIMIT 1");
+                    $new_id = mysqli_fetch_assoc($result)["ID"] + 1;
+                    $owner_id = $username;
+                    $result = $mysqli->query("INSERT INTO Property (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)
+                                                VALUES ('$new_id', '$property_name', '$size', '$is_commercial', '$is_public', '$street_address', '$city', '$zip', '$property_type', '$owner_id', NULL)");
+                    foreach ($farm_items as $farm_item) {
+                        $result = $mysqli->query("INSERT INTO Has VALUES($new_id, '$farm_item')");
+                    }
+                    header("Location: login.php"); /* Redirect browser */
+                    exit();
+                }
+
             }
 
         }
-
+    } else {
+        $error_msg = "Your Email must be valid and your password must be at least 8 characters";
     }
 
 }

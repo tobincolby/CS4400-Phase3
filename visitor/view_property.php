@@ -20,7 +20,11 @@ $property_id = $_GET['property_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['form'] == 'LOG') {
         $rating = $_POST['rating'];
-        $result = $mysqli->query("INSERT INTO Visit VALUES ('$username', $property_id, NOW(), $rating)");
+        if ($rating >=1 && $rating <= 5) {
+            $result = $mysqli->query("INSERT INTO Visit VALUES ('$username', $property_id, NOW(), $rating)");
+        } else {
+            $error_msg = "Rating must be between 1 and 5.";
+        }
     } else {
         $result = $mysqli->query("DELETE FROM Visit WHERE Username = '$username' AND PropertyID = $property_id");
     }
@@ -66,6 +70,10 @@ while ($farm_row = mysqli_fetch_assoc($farmitems)) {
 <body>
 <h1><?php echo $row['Name']; ?> Details</h1>
 <br>
+<?php if (isset($error_msg) && $error_msg != "") {
+  echo "<h3>".$error_msg."</h3>";
+}
+?>
 <table>
     <tr>
         <td>Name:</td><td><?php echo $row['Name']; ?></td>
