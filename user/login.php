@@ -142,7 +142,7 @@ text-align:center;
         </table>
         </center>
             <br>
-            <input type="submit" name="login" class="button">Login</input>
+            <input type="submit" name="login" class="button" value="Login"/>
             <a href="registervisitor.php">Register Visitor</a>
         <a href="registerowner.php"> Register Owner</a>
 

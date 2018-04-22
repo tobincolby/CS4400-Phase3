@@ -33,14 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $zip = $_POST['zip'];
             $size = $_POST['size'];
             $property_type = $_POST['property_type'];
-            $is_public = ($_POST['is_public'] == "Yes" ? true : false);
-            $is_commercial = ($_POST['is_commercial'] == "Yes" ? true : false);
+            $is_public = $_POST['is_public'];
+            $is_commercial = $_POST['is_commercial'];
             if ($property_type == 'FARM') {
-                $farm_items = array($_POST['animal_type'], $_POST['crop_type']);
+                $farm_items = array($_POST['animal_type'], $_POST['farm_type']);
+            } else if ($property_type == 'GARDEN') {
+                $farm_items = array($_POST['garden_type']);
             } else {
-                $farm_items = array($_POST['crop_type']);
+                $farm_items = array($_POST['orchard_type']);
             }
-            $result = $mysqli->query("SELECT Count(*) FROM Property WHERE PropertyName='$property_name'");
+            $result = $mysqli->query("SELECT Name FROM Property WHERE Name='$property_name'");
             if (mysqli_num_rows($result) > 0) {
                 $error_msg = "Property Name Already Exists";
             } else {
@@ -49,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID DESC LIMIT 1");
                 $new_id = mysqli_fetch_assoc($result)["ID"] + 1;
                 $owner_id = $username;
-                $result = $mysqli->query("INSERT INTO Property VALUES($new_id, '$property_name', $size, $is_commercial, 
-                        $is_public, '$street_address', '$city', $zip, '$property_type', '$owner_id', NULL)");
+                $result = $mysqli->query("INSERT INTO Property (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)
+                                                VALUES ('$new_id', '$property_name', '$size', '$is_commercial', '$is_public', '$street_address', '$city', '$zip', '$property_type', '$owner_id', NULL)");
                 foreach ($farm_items as $farm_item) {
                     $result = $mysqli->query("INSERT INTO Has VALUES($new_id, '$farm_item')");
                 }
@@ -77,18 +79,18 @@ while ($row = mysqli_fetch_assoc($garden_crops)) {
 }
 
 $orchard_html = "";
-while ($row = mysqli_fetch_assoc($orchard_crops)) {
-    $orchard_html.= "<option value='".$row['Name']."'>".$row['Name']."</option>";
+while ($orchardrow = mysqli_fetch_assoc($orchard_crops)) {
+    $orchard_html.= "<option value='".$orchardrow['Name']."'>".$orchardrow['Name']."</option>";
 }
 
 $farm_html = "";
-while ($row = mysqli_fetch_assoc($farm_crops)) {
-    $farm_html.= "<option value='".$row['Name']."'>".$row['Name']."</option>";
+while ($farmrow = mysqli_fetch_assoc($farm_crops)) {
+    $farm_html.= "<option value='".$farmrow['Name']."'>".$farmrow['Name']."</option>";
 }
 
 $animal_html = "";
-while ($row = mysqli_fetch_assoc($farm_animals)) {
-    $animal_html.= "<option value='".$row['Name']."'>".$row['Name']."</option>";
+while ($animalrow = mysqli_fetch_assoc($farm_animals)) {
+    $animal_html.= "<option value='".$animalrow['Name']."'>".$animalrow['Name']."</option>";
 }
 
 ?>
@@ -196,26 +198,22 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
             var selectValue = document.getElementById("property_type").value;
             if (selectValue == "FARM") {
                 document.getElementById("animal_type").style.visibility = "visible";
-                document.getElementById("animal_type_label").style.visibility = "visible";
+                document.getElementById("farm_type").style.visibility = "visible";
+                document.getElementById("garden_type").style.visibility = "hidden";
+                document.getElementById("orchard_type").style.visibility = "hidden";
 
-                var cropSelect = document.getElementById("crop_type");
-                var farmHTML = document.getElementById("farm_html").value;
-                cropSelect.innerHTML = farmHTML;
 
             } else if (selectValue == "GARDEN") {
                 document.getElementById("animal_type").style.visibility = "hidden";
-                document.getElementById("animal_type_label").style.visibility = "hidden";
+                document.getElementById("farm_type").style.visibility = "hidden";
+                document.getElementById("garden_type").style.visibility = "visible";
+                document.getElementById("orchard_type").style.visibility = "hidden";
 
-                var cropSelect = document.getElementById("crop_type");
-                var gardenHTML = document.getElementById("garden_html").value;
-                cropSelect.innerHTML = gardenHTML;
             } else {
                 document.getElementById("animal_type").style.visibility = "hidden";
-                document.getElementById("animal_type_label").style.visibility = "hidden";
-
-                var cropSelect = document.getElementById("crop_type");
-                var orchardHTML = document.getElementById("orchard_html").value;
-                cropSelect.innerHTML = orchardHTML;
+                document.getElementById("farm_type").style.visibility = "hidden";
+                document.getElementById("garden_type").style.visibility = "hidden";
+                document.getElementById("orchard_type").style.visibility = "visible";
             }
         }
 
@@ -292,14 +290,29 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
                         </select>
                     </td>
 
-                    <td><label for="crop_type" text-align>Crop*: </label></td>
+                    <td><label for="farm_type" text-align>Crop*: </label></td>
                     <td>
-                        <select id="crop_type" name="crop_type">
+                        <select id="farm_type" name="farm_type" style="visibility: hidden">
+                            <?php
+                            echo $farm_html;
+                            ?>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="garden_type" name="garden_type">
                             <?php
                             echo $garden_html;
                             ?>
                         </select>
                     </td>
+                    <td>
+                        <select id="orchard_type" name="orchard_type" style="visibility: hidden;">
+                            <?php
+                            echo $orchard_html;
+                            ?>
+                        </select>
+                    </td>
+
                 </tr>
                 <tr>
                     <td><label for="is_public" text-align>Public?*: </label></td>

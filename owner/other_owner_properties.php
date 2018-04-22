@@ -238,7 +238,9 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 
 </table>
 
-
+<br>
+<br>
+<br>
 
 </body>
 </html>

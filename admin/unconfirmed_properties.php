@@ -165,7 +165,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 
 
 <body>
-<h1 id="title"><strong>Confirmed Properties</strong></h1>
+<h1 id="title"><strong>Unconfirmed Properties</strong></h1>
 
 
 <table size="100%" id="property_table">

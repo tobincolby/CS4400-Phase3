@@ -23,7 +23,11 @@ $property_id = $_GET['property_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['form'] == 'modify') {
         $deleted_items = explode(',', $_POST['deleted_items']);
-        $added_items = explode(',', $_POST['added_items']);
+        if ($_POST['property_type'] == 'FARM') {
+            $added_items = array($_POST['animal_type'], $_POST['crop_type']);
+        } else {
+            $added_items = array($_POST['crop_type']);
+        }
 
         $name = $_POST['name'];
         $address = $_POST['address'];
@@ -34,17 +38,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $public = $_POST['is_public'];
         $commercial = $_POST['is_commercial'];
 
-        $result = $mysqli->query("SELECT Name FROM Property WHERE Name = $name AND NOT (ID = $property_id)");
+        $result = $mysqli->query("SELECT Name FROM Property WHERE Name = '$name' AND NOT (ID = $property_id)");
         if (mysqli_num_rows($result) == 0) {
-            $result = $mysqli->query("UPDATE Property SET Name = $name, Street = $address, City = $city, Zip = $zip,
+            $result = $mysqli->query("UPDATE Property SET Name = '$name', Street = '$address', City = '$city', Zip = $zip,
                         Size = $size, IsPublic = $public, IsCommerical = $commercial, ApprovedBy = NULL WHERE ID = $property_id");
 
-            foreach ($item as $deleted_items) {
-                $delete_result = $mysqli->query("DELETE FROM Has WHERE PropertyID = $property_id AND ItemName = $item");
+            foreach ($deleted_items as $item) {
+                if ($item != "0")
+                $delete_result = $mysqli->query("DELETE FROM Has WHERE PropertyID = $property_id AND ItemName = '$item'");
             }
 
-            foreach ($item as $added_items) {
-                $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, $item)");
+            foreach ($added_items as $item) {
+                if ($item != "0")
+                $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
             }
         } else {
             $errormsg = "The name you are changing the property to already exists";
@@ -53,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $new_crop = $_POST['crop_name'];
         $crop_type = $_POST['crop_type'];
 
-        $result = $mysqli->query("INSERT INTO FarmItem VALUES ($new_crop, 0, $crop_type)");
+        $result = $mysqli->query("INSERT INTO FarmItem VALUES ('$new_crop', 0, '$crop_type')");
 
     } else {
         $result = $mysqli->query("DELETE FROM Property WHERE ID = $property_id");
@@ -90,6 +96,20 @@ if ($property_row['PropertyType'] == 'GARDEN') {
 $crop_html = "";
 while ($row = mysqli_fetch_assoc($crops)) {
     $crop_html.= "<option value='".$row['Name']."'>".$row['Name']."</option>";
+}
+
+$item_animals = "";
+$item_crops = "";
+while ($farm_item_row = mysqli_fetch_assoc($farm_items)) {
+    if ($farm_item_row['Type'] == 'ANIMAL') {
+        $item_animals.="<tr id='".$farm_item_row['Name']."'>
+                    <th>".$farm_item_row['Name']."</th><th><input type='button' onclick='onRemoveItem(\"".$farm_item_row['Name']."\")' value='X'/> </th>
+</tr>";
+    } else {
+        $item_crops.="<tr id='".$farm_item_row['Name']."'>
+                    <th>".$farm_item_row['Name']."</th><th><input type='button' onclick='onRemoveItem(\"".$farm_item_row['Name']."\")' value='X'/> </th>
+</tr>";
+    }
 }
 ?>
 
@@ -224,14 +244,14 @@ while ($row = mysqli_fetch_assoc($crops)) {
 
 <h1 id="title"><strong>Manage <?php echo $property_row['Name']; ?></strong></h1>
 
-<?php if ($errormsg == "") {
+<?php if (isset($errormsg) && $errormsg != "") {
     echo "<h3>".$errormsg."</h3>";
 }
 ?>
 <div>
 
     <form id="modify" name="modify" method="post" action="manage_property.php?property_id=<?php echo $property_id; ?>">
-
+        <input type="hidden" name="property_type" value="<?php echo $property_row['PropertyType']; ?>"/>
         <center>
 
             <table size="75%">
@@ -240,8 +260,8 @@ while ($row = mysqli_fetch_assoc($crops)) {
                     <td><input type="text" id="name" name="name" value="<?php echo $property_row['Name']; ?>"></td>
                 </tr>
                 <tr>
-                    <td><label for="addr" text-align>Address: </label></td>
-                    <td><input type="text" id="addr" name="addr" value="<?php echo $property_row['Street']; ?>"></td>
+                    <td><label for="address" text-align>Address: </label></td>
+                    <td><input type="text" id="address" name="address" value="<?php echo $property_row['Street']; ?>"></td>
                 </tr>
                 <tr>
                     <td><label for="city" text-align>City: </label></td>
@@ -268,7 +288,7 @@ while ($row = mysqli_fetch_assoc($crops)) {
                 <tr>
                     <td><label for="is_public" text-align>Public: </label></td>
                     <td>
-                        <select id="is_public">
+                        <select id="is_public" name="is_public">
                             <option value="1">True</option>
                             <option value="0">False</option>
                         </select>
@@ -277,7 +297,7 @@ while ($row = mysqli_fetch_assoc($crops)) {
                 <tr>
                     <td><label for="is_commercial" text-align>Commercial: </label></td>
                     <td>
-                        <select id="is_commercial">
+                        <select id="is_commercial" name="is_commercial">
                             <option value="1">True</option>
                             <option value="0">False</option>
                         </select>
@@ -292,13 +312,7 @@ while ($row = mysqli_fetch_assoc($crops)) {
                     <tr>
                         <th>Animals</th>
                     </tr>
-                    <?php while ($animal_row = mysqli_fetch_assoc($farm_items)) {
-                        if ($animal_row['Type'] == 'Animal') {
-                            ?>
-                            <tr id="<?php echo $animal_row['Name'];?>">
-                                <th><?php echo $animal_row['Name']; ?></th><th><input type="button" onclick="onRemoveItem('<?php echo $animal_row['Name']; ?>')" value="X"/> </th>
-                            </tr>
-                        <?php }} ?>
+                    <?php echo $item_animals; ?>
 
                 </table>
             <?php } ?>
@@ -310,13 +324,7 @@ while ($row = mysqli_fetch_assoc($crops)) {
                 <tr>
                     <th>Crops</th>
                 </tr>
-                <?php while ($animal_row = mysqli_fetch_assoc($farm_items)) {
-                    if ($animal_row['Type'] != 'Animal') {
-                        ?>
-                        <tr id="<?php echo $animal_row['Name'];?>">
-                            <th><?php echo $animal_row['Name']; ?></th><th><input type="button" onclick="onRemoveItem('<?php echo $animal_row['Name']; ?>')" value="X"/> </th>
-                        </tr>
-                    <?php }} ?>
+                <?php echo $item_crops; ?>
 
             </table>
 
@@ -327,21 +335,21 @@ while ($row = mysqli_fetch_assoc($crops)) {
                     <tr>
                         <td><label for="select_animal" text-align>Add New Animal: </label></td>
                         <td>
-                            <select id="animal_type">
+                            <select id="animal_type" name="animal_type">
+                                <option value="0">Add Nothing</option>
                                 <?php echo $animal_html; ?>
                             </select>
                         </td>
-                        <td><button type="button" class="button">Add Animal</button></td>
                     </tr>
                 <?php } ?>
                 <tr>
                     <td><label for="select_crop" text-align>Add New Crop: </label></td>
                     <td>
-                        <select id="crop_type">
+                        <select id="crop_type" name="crop_type">
+                            <option value="0">Add Nothing</option>
                             <?php echo $crop_html; ?>
                         </select>
                     </td>
-                    <td><button type="button" class="button">Add Crop</button></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Save Changes"/> </td>
@@ -383,6 +391,10 @@ while ($row = mysqli_fetch_assoc($crops)) {
     </form>
 
 </div>
+
+<br>
+<br>
+<br>
 
 </body>
 

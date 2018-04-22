@@ -55,8 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
         $result = $mysqli->query("DELETE FROM Property WHERE ID = $property_id");
-        //TODO add page redirect to viewing page
-        header("unconfirmed_properties.php");
+        header("Location: ../user/mainpage.php");
         exit();
 
     }
@@ -95,11 +94,11 @@ $item_crops = "";
 while ($farm_item_row = mysqli_fetch_assoc($farm_items)) {
     if ($farm_item_row['Type'] == 'ANIMAL') {
         $item_animals.="<tr id='".$farm_item_row['Name']."'>
-                    <th>".$farm_item_row['Name']."</th><th><input type='button' onclick='onRemoveItem('".$farm_item_row['Name']."')' value='X'/> </th>
+                    <th>".$farm_item_row['Name']."</th><th><input type='button' onclick='onRemoveItem(\"".$farm_item_row['Name']."\")' value='X'/> </th>
 </tr>";
     } else {
         $item_crops.="<tr id='".$farm_item_row['Name']."'>
-                    <th>".$farm_item_row['Name']."</th><th><input type='button' onclick='onRemoveItem('".$farm_item_row['Name']."')' value='X'/> </th>
+                    <th>".$farm_item_row['Name']."</th><th><input type='button' onclick='onRemoveItem(\"".$farm_item_row['Name']."\")' value='X'/> </th>
 </tr>";
     }
 }
@@ -328,7 +327,7 @@ while ($farm_item_row = mysqli_fetch_assoc($farm_items)) {
                     <td><label for="select_animal" text-align>Add New Animal: </label></td>
                     <td>
                         <select id="animal_type" name="animal_type">
-                            <option value=""></option>
+                            <option value="0">Add Nothing</option>
                             <?php echo $animal_html; ?>
                         </select>
                     </td>
@@ -338,7 +337,7 @@ while ($farm_item_row = mysqli_fetch_assoc($farm_items)) {
                     <td><label for="select_crop" text-align>Add New Crop: </label></td>
                     <td>
                         <select id="crop_type" name="crop_type">
-                            <option value=""></option>
+                            <option value="0">Add Nothing</option>
                             <?php echo $crop_html; ?>
                         </select>
                     </td>

@@ -235,6 +235,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
     <tr>
         <td><button type="button" class="button" onclick="onSearchPressed()">Search Properties</button></td>
         <td><a href="other_owner_properties.php">View Other Properties</a></td>
+        <td><a href="add_property.php">Add Other Properties</a> </td>
         <td><a href="../user/logout.php">Logout</a></td>
     </tr>
 
