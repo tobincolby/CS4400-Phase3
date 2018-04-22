@@ -27,12 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1");
     }
 } else {
-    $searchtype = "";
     $searchtext = "";
-
-    if (isset($_GET['searchtype'])) {
+    $searchtype = "";
+    $searchurl = "";
+    if (isset($_GET['searchtype']) && $_GET['searchtype'] != "" && $_GET['searchtext'] != "") {
+        $searchtext = "LIKE '%".$_GET['searchtext']."%'";
         $searchtype = "AND ".$_GET['searchtype'];
-        $searchtext = "LIKE '%" . $_GET['searchtext'] . "%'";
+        $searchurl = "&searchtype=".$_GET['searchtype']."&searchtext=".$_GET['searchtext'];
     }
 
     $sort_type = "";
@@ -73,7 +74,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1>Approved Farm Items</h1>
     <table>
         <tr>
-            <td>Name</td><td>Type</td><td>X</td>
+            <td>Name
+                <br>
+                <a href="approved_items.php?sort=Name&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="approved_items.php?sort=Name&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+
+            </td>
+            <td>Type
+                <br>
+                <a href="approved_items.php?sort=Type&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="approved_items.php?sort=Type&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+            </td>
+            <td>X</td>
         </tr>
         <?php
         while ($row = mysqli_fetch_assoc($farm_items)) {

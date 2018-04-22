@@ -37,9 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     $searchtext = "";
     $searchtype = "";
-    if (isset($_GET['searchtype'])) {
+    $searchurl = "";
+    if (isset($_GET['searchtype']) && $_GET['searchtype'] != "" && $_GET['searchtext'] != "") {
         $searchtext = "LIKE '%".$_GET['searchtext']."%'";
         $searchtype = "AND ".$_GET['searchtype'];
+        $searchurl = "&searchtype=".$_GET['searchtype']."&searchtext=".$_GET['searchtext'];
     }
 
     $sort_type = "";
@@ -78,7 +80,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <center>
     <h1>Visitors in the System</h1>
     <table>
-        <tr><td>Username</td><td>Email</td><td>Logged Visits</td><td>Delete Account?</td><td>Delete Visits?</td></tr>
+        <tr><td>Username
+            <br>
+                <a href="view_visitors.php?sort=Username&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="view_visitors.php?sort=Username&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+
+            </td>
+            <td>Email
+            <br>
+                <a href="view_visitors.php?sort=Email&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="view_visitors.php?sort=Email&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+            </td>
+            <td>Logged Visits
+            <br>
+                <a href="view_visitors.php?sort=Visits&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="view_visitors.php?sort=Visits&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+
+            </td>
+            <td>Delete Account?</td>
+            <td>Delete Visits?</td></tr>
         <?php
         while ($row = mysqli_fetch_assoc($visitors)) {
             ?>

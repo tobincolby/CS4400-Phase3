@@ -23,18 +23,23 @@ if (isset($_GET['sort'])) {
 }
 
 $searchquery = "";
-if (isset($_GET['search'])) {
-    $searchtype = $_GET['search'];
+$searchurl = "";
+if (isset($_GET['searchtype'])) {
+    $searchtype = $_GET['searchtype'];
     if ($searchtype == 'Size' || $searchtype == 'Visits' || $searchtype == 'Rating') {
         $lowbound = $_GET['lower'];
         $upperbound = $_GET['upper'];
         $searchquery = "AND ".$searchtype." BETWEEN ".$lowbound." AND ".$upperbound;
+        $searchurl = "&searchtype=".$searchtype."&lower=".$lowbound."&upper=".$upperbound;
     } else if ($searchtype == 'Zip') {
         $searchtext = $_GET['searchtext'];
         $searchquery = "AND Zip = ".$searchtext;
+        $searchurl = "&searchtype=".$searchtype."&searchtext=".$searchtext;
     } else {
-        $searchtext = "";
+        $searchtext = $_GET['searchtext'];
         $searchquery = "AND ".$searchtype." LIKE '%".$searchtext."%'";
+        $searchurl = "&searchtype=".$searchtype."&searchtext=".$searchtext;
+
     }
 }
 
@@ -171,17 +176,41 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 <table size="100%" id="property_table">
 
     <tr>
-        <th>Name</th>
+        <th>Name
+            <br>
+            <a href="unconfirmed_properties.php?sort=Name&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+            <a href="unconfirmed_properties.php?sort=Name&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+        </th>
         <th>Address</th>
         <th>City</th>
-        <th>Zip Code</th>
-        <th>Size</th>
-        <th>Type</th>
+        <th>Zip Code
+            <br>
+            <a href="unconfirmed_properties.php?sort=Zip&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+            <a href="unconfirmed_properties.php?sort=Zip&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+        </th>
+        <th>Size
+            <br>
+            <a href="unconfirmed_properties.php?sort=Size&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+            <a href="unconfirmed_properties.php?sort=Size&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+        </th>
+        <th>Type
+            <br>
+            <a href="unconfirmed_properties.php?sort=PropertyType&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+            <a href="unconfirmed_properties.php?sort=PropertyType&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+        </th>
         <th>Public</th>
         <th>Commercial</th>
         <th>ID</th>
-        <th>Visits</th>
-        <th>Avg. Rating</th>
+        <th>Visits
+            <br>
+            <a href="unconfirmed_properties.php?sort=Visits&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+            <a href="unconfirmed_properties.php?sort=Visits&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+        </th>
+        <th>Avg. Rating
+            <br>
+            <a href="unconfirmed_properties.php?sort=Rating&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+            <a href="unconfirmed_properties.php?sort=Rating&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+        </th>
     </tr>
 
     <?php

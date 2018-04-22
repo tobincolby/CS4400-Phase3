@@ -58,7 +58,19 @@ $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved =
     <h1>Approved Farm Items</h1>
     <table>
         <tr>
-            <td>Name</td><td>Type</td><td>X</td><td>Approve?</td>
+            <td>Name
+            <br>
+            <a href="pending_items.php?sort=Name&sort_direction=ASC">ASC</a>
+                <a href="pending_items.php?sort=Name&sort_direction=DESC">DESC</a>
+
+            </td>
+            <td>Type
+            <br>
+                <a href="pending_items.php?sort=Type&sort_direction=ASC">ASC</a>
+                <a href="pending_items.php?sort=Type&sort_direction=DESC">DESC</a>
+            </td>
+            <td>X</td>
+            <td>Approve?</td>
         </tr>
         <?php
         while ($row = mysqli_fetch_assoc($farm_items)) {

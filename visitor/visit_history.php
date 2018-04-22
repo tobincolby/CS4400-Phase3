@@ -42,7 +42,21 @@ if (isset($_GET['sort'])) {
 <hr>
 <table>
     <tr>
-        <td>Name</td><td>Date Logged</td><td>Rating</td>
+        <td>Name
+        <br>
+            <a href="visit_history.php?sort=Name&sort_direction=ASC">ASC</a>
+            <a href="visit_history.php?sort=Name&sort_direction=DESC">DESC</a>
+        </td>
+        <td>Date Logged
+            <br>
+            <a href="visit_history.php?sort=VisitDate&sort_direction=ASC">ASC</a>
+            <a href="visit_history.php?sort=VisitDate&sort_direction=DESC">DESC</a>
+        </td>
+        <td>Rating
+            <br>
+            <a href="visit_history.php?sort=Rating&sort_direction=ASC">ASC</a>
+            <a href="visit_history.php?sort=Rating&sort_direction=DESC">DESC</a>
+        </td>
     </tr>
     <?php
     while ($row = mysqli_fetch_assoc($visits)) {

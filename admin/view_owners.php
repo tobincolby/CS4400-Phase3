@@ -30,9 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     $searchtext = "";
     $searchtype = "";
-    if (isset($_GET['searchtype'])) {
-        $searchtext = "LIKE %".$_GET['searchtext']."%";
-        $searchtype = " AND ".$_GET['searchtype'];
+    $searchurl = "";
+    if (isset($_GET['searchtype']) && $_GET['searchtype'] != "" && $_GET['searchtext'] != "") {
+        $searchtext = "LIKE '%".$_GET['searchtext']."%'";
+        $searchtype = "AND ".$_GET['searchtype'];
+        $searchurl = "&searchtype=".$_GET['searchtype']."&searchtext=".$_GET['searchtext'];
     }
 
     $sort_type = "";
@@ -67,7 +69,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <center>
     <h1>Owners in the System</h1>
     <table>
-        <tr><td>Username</td><td>Email</td><td>Properties</td><td>Delete Account?</td></tr>
+        <tr><td>Username
+            <br>
+                <a href="view_owners.php?sort=Username&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="view_owners.php?sort=Username&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+            </td>
+            <td>Email
+            <br>
+                <a href="view_owners.php?sort=Email&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="view_owners.php?sort=Email&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+
+            </td>
+            <td>Properties
+            <br>
+                <a href="view_owners.php?sort=Properties&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+                <a href="view_owners.php?sort=Properties&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+            </td>
+            <td>Delete Account?</td></tr>
         <?php
         while ($row = mysqli_fetch_assoc($owners)) {
             ?>
