@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($item != "")
                 $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
             }
-            $farm_item_count = mysqli_fetch_assoc($mysqli->query("SELECT Count(*) AS Items FROM FarmItem WHERE Name IN (SELECT Name FROM Has WHERE PropertyID = $property_id)"))["Items"];
+            $farm_item_count = mysqli_fetch_assoc($mysqli->query("SELECT Count(*) AS Items FROM Has WHERE PropertyID = $property_id"))["Items"];
             if ($farm_item_count == 0 || ($_POST['property_type'] == 'FARM' && $farm_item_count <= 1)) {
                 foreach ($deleted_items as $item) {
                     if ($item != "0")

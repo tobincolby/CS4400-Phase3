@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdc9ea9e-e3ea-496c-b977-a810f6ddae82" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/admin/approved_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/approved_items.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/manage_property.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/manage_property.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/pending_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pending_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/unconfirmed_properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/unconfirmed_properties.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/owner/manage_property.php" beforeDir="false" afterPath="$PROJECT_DIR$/owner/manage_property.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,20 +23,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage_property.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="manage_property.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/owner/manage_property.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="65" column="13" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="65" selection-end-column="13" />
+            <state relative-caret-position="239">
+              <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage_property.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manage_property.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/manage_property.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="54" column="51" lean-forward="true" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
+            <state relative-caret-position="236">
+              <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -129,8 +126,8 @@
         <option value="$PROJECT_DIR$/admin/unconfirmed_properties.php" />
         <option value="$PROJECT_DIR$/admin/pending_items.php" />
         <option value="$PROJECT_DIR$/admin/approved_items.php" />
-        <option value="$PROJECT_DIR$/owner/manage_property.php" />
         <option value="$PROJECT_DIR$/admin/manage_property.php" />
+        <option value="$PROJECT_DIR$/owner/manage_property.php" />
       </list>
     </option>
   </component>
@@ -296,7 +293,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56515000" />
+    <option name="totallyTimeSpent" value="57746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="43" width="1260" height="672" extended-state="0" />
@@ -695,17 +692,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/owner/manage_property.php">
+    <entry file="file://$PROJECT_DIR$/admin/manage_property.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="65" column="13" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="65" selection-end-column="13" />
+        <state relative-caret-position="236">
+          <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/manage_property.php">
+    <entry file="file://$PROJECT_DIR$/owner/manage_property.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="54" column="51" lean-forward="true" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
+        <state relative-caret-position="239">
+          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
         </state>
       </provider>
     </entry>
