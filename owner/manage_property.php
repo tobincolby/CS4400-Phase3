@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
             }
             $farm_item_count = mysqli_fetch_assoc($mysqli->query("SELECT Count(*) AS Items FROM FarmItem WHERE Name IN (SELECT Name FROM Has WHERE PropertyID = $property_id)"))["Items"];
-            if ($farm_item_count == 0) {
+            if ($farm_item_count == 0 || ($_POST['property_type'] == 'FARM' && $farm_item_count <= 1)) {
                 foreach ($deleted_items as $item) {
                     if ($item != "0")
                         $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
@@ -72,6 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $crop_type = $_POST['crop_type'];
 
         $result = $mysqli->query("INSERT INTO FarmItem VALUES ('$new_crop', 0, '$crop_type')");
+        if (!$result) {
+            $errormsg = "Crop Name Already Exists";
+        }
 
     } else {
         $result = $mysqli->query("DELETE FROM Property WHERE ID = $property_id");

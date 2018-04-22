@@ -24,6 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $type = $_POST['type'];
         $name = $_POST['name'];
         $result = $mysqli->query("INSERT INTO FarmItem VALUES('$name', 1, '$type')");
+        if (!$result) {
+            $errormsg = "That animal name already exists";
+        }
         $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1");
     }
 } else {
@@ -72,6 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <center>
     <h1>Approved Farm Items</h1>
+    <?php
+    if (isset($errormsg) && $errormsg != "") {
+        echo "<h3>".$errormsg."</h3>";
+    }
+
+    ?>
     <table>
         <tr>
             <td>Name

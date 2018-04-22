@@ -211,6 +211,11 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
             <a href="unconfirmed_properties.php?sort=Rating&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
             <a href="unconfirmed_properties.php?sort=Rating&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
         </th>
+        <th>Owner
+            <br>
+            <a href="unconfirmed_properties.php?sort=Owner&sort_direction=ASC<?php echo $searchurl; ?>">ASC</a>
+            <a href="unconfirmed_properties.php?sort=Owner&sort_direction=DESC<?php echo $searchurl; ?>">DESC</a>
+        </th>
     </tr>
 
     <?php
@@ -228,6 +233,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
             <th><?php echo $row['ID']; ?></th>
             <th><?php echo $row['Visits']; ?></th>
             <th><?php echo $row['Rating']; ?></th>
+            <th><?php echo $row['Owner']; ?></th>
         </tr>
         <?php
     }

@@ -42,15 +42,8 @@ $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved =
 
 <html>
 <head>
-    <title>Approved Farm Items</title>
+    <title>Pending Farm Items</title>
 
-    <script>
-        function onSearchClick() {
-            var searchtype = document.getElementById("searchtype").value;
-            var searchtext = document.getElementById("searchtext").value;
-            window.location.replace("approved_items.php?searchtype=" + searchtype + "&searchtext="+searchtext);
-        }
-    </script>
 </head>
 
 <body>
@@ -79,7 +72,7 @@ $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved =
             <tr>
                 <td><?php echo $row['Name']; ?></td><td><?php echo $row['Type']; ?></td>
                 <td>
-                    <form name="delete" action="pending_items_items.php" method="post">
+                    <form name="delete" action="pending_items.php" method="post">
                         <input type="hidden" value="DELETE" name="form" id="form"/>
                         <input type="hidden" value="<?php echo $row['Name']; ?>" name="name" id="name"/>
                         <input type="submit" value="Delete"/>
