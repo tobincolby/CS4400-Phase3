@@ -8,7 +8,4 @@
 session_start();
 $mysqli = new mysqli("localhost", "root", "", "Phase3DB");
 
-
-
-
 ?>

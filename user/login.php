@@ -9,12 +9,12 @@
 require "../include/connection.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $pass = $_POST['password'];
 
     $newpass = md5($pass);
 
-    $result = $mysqli->query("SELECT * FROM User WHERE Username=$username AND Password=$newpass LIMIT 1");
+    $result = $mysqli->query("SELECT * FROM User WHERE Email='$email' AND Password='$newpass' LIMIT 1");
     if (mysqli_num_rows($result) == 0) {
         $errormsg = "Login Credentials Invalid";
     } else {
@@ -120,6 +120,11 @@ text-align:center;
 
 
 <h1 id="title"><strong>Atlanta Gardens, Farms, and Orchards</strong></h1>
+<br>
+<?php if (isset($errormsg) && $errormsg != "") {
+    echo "<h3>".$errormsg."</h3>";
+}?>
+<br>
 <div>
 
     <form name="login_form" action="login.php" method="post">
@@ -137,9 +142,9 @@ text-align:center;
         </table>
         </center>
             <br>
-            <button type="submit" name="login" class="button">Login</button>
-            <button type="button" name="registerVisitor" class="button">Register Visitor</button>
-            <button type="button" name="registerOwner" class="button">Register Owner</button>
+            <input type="submit" name="login" class="button">Login</input>
+            <a href="registervisitor.php">Register Visitor</a>
+        <a href="registerowner.php"> Register Owner</a>
 
     </form>
 

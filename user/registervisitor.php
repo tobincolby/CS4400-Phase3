@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Created by PhpStorm.
@@ -19,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($password != $confirm_pass) {
         $error_msg = "Passwords Don't Match";
     } else {
-        $result = $mysqli->query("SELECT username FROM User WHERE Username=$username OR Email=$email");
+        $result = $mysqli->query("SELECT username FROM User WHERE Username='$username' OR Email='$email'");
         if (mysqli_num_rows($result) != 0) {
             $error_msg = "Email/Username Already exists";
         } else {
 
             $newpass = md5($password);
-            $result = $mysqli->query("INSERT INTO User VALUES ($username, $email, $newpass, 'VISITOR')");
+            $result = $mysqli->query("INSERT INTO User VALUES ('$username', '$email', '$newpass', 'VISITOR')");
             header("Location: login.php"); /* Redirect browser */
             exit();
 
@@ -120,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <h1 id="title"><strong>New Visitor Registration</strong></h1>
 <br>
-<?php if ($error_msg != "") {
+<?php if (isset($error_msg) && $error_msg != "") {
     echo "<h4>".$error_msg."</h4><br>";
 }
 ?>
@@ -151,8 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         </center>
 
-        <button type="button" name="register" class="button">Register Visitor</button>
-        <button type="button" name="login" class="button">Cancel</button>
+        <input type="submit" name="register" class="button" value="Register"/>
+        <a href="login.php">Cancel</a>
 
     </form>
 
