@@ -25,8 +25,8 @@ if (isset($_GET['sort'])) {
 }
 
 $searchquery = "";
-if (isset($_GET['search'])) {
-    $searchtype = $_GET['search'];
+if (isset($_GET['searchtype'])) {
+    $searchtype = $_GET['searchtype'];
     if ($searchtype == 'Size' || $searchtype == 'Visits' || $searchtype == 'Rating') {
         $lowbound = $_GET['lower'];
         $upperbound = $_GET['upper'];
@@ -35,15 +35,15 @@ if (isset($_GET['search'])) {
         $searchtext = $_GET['searchtext'];
         $searchquery = "AND Zip = ".$searchtext;
     } else {
-        $searchtext = "";
-        $searchquery = "AND ".$searchtype." LIKE %".$searchtext."%";
+        $searchtext = $_GET['searchtext'];
+        $searchquery = "AND ".$searchtype." LIKE '%".$searchtext."%'";
     }
 }
 
 $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Street, Property.City,
                 Property.Zip, Property.Size, Property.PropertyType, Property.IsPublic, Property.ApprovedBy, Property.IsCommercial, Property.ID,
                 COUNT(Visit.PropertyID) AS Visits, AVG(Visit.Rating) AS Rating, Property.Owner FROM Property  LEFT JOIN Visit ON (Property.ID = Visit.PropertyID) GROUP BY Property.ID) AS PropertyVisit 
-                WHERE Owner = $owner_username $searchquery $sorttype $sortdirection");
+                WHERE Owner = '$owner_username' $searchquery $sorttype $sortdirection");
 
 
 
@@ -199,7 +199,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
             <th><?php echo $row['Size']; ?></th>
             <th><?php echo $row['PropertyType']; ?></th>
             <th><?php echo $row['IsPublic']; ?></th>
-            <th><?php echo $row['IsCommerical']; ?></th>
+            <th><?php echo $row['IsCommercial']; ?></th>
             <th><?php echo $row['ID']; ?></th>
             <th><?php echo $row['Visits']; ?></th>
             <th><?php echo $row['Rating']; ?></th>

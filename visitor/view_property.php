@@ -16,17 +16,14 @@ if (!(isset($_SESSION['username']) && $_SESSION['logged_in'] == 1)) {
 }
 
 $username = $_SESSION['username'];
-
+$property_id = $_GET['property_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $pid = $_POST['property_id'];
     if ($_POST['form'] == 'LOG') {
         $rating = $_POST['rating'];
-        $result = $mysqli->query("INSERT INTO Visit VALUES ($username, $pid, NOW(), $pid)");
+        $result = $mysqli->query("INSERT INTO Visit VALUES ('$username', $property_id, NOW(), $rating)");
     } else {
-        $result = $mysqli->query("DELETE FROM Visit WHERE Username = $username AND PropertyID = $pid");
+        $result = $mysqli->query("DELETE FROM Visit WHERE Username = '$username' AND PropertyID = $property_id");
     }
-} else {
-    $pid = $_POST['property_id'];
 }
 
 $property = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Street, Property.City,
@@ -38,16 +35,26 @@ $row = mysqli_fetch_assoc($property);
 
 $owner = $row['Owner'];
 
-$owner_row = mysqli_fetch_assoc($mysqli->query("SELECT * FROM User WHERE Username = $owner"));
+$owner_row = mysqli_fetch_assoc($mysqli->query("SELECT * FROM User WHERE Username = '$owner'"));
 
-$farmitems = $mysqli->query("SELECT * FROM FarmItem WHERE FarmItem.Name IN (SELECT Has.FarmItemName FROM HAS WHERE Has.PropertyID = $property_id)");
+$farmitems = $mysqli->query("SELECT * FROM FarmItem WHERE FarmItem.Name IN (SELECT Has.ItemName FROM Has WHERE Has.PropertyID = $property_id)");
 
 
-$result = $mysqli->query("SELECT COUNT(*) FROM Visit WHERE PropertyID = $pid AND Username = $username");
+$result = $mysqli->query("SELECT PropertyID FROM Visit WHERE PropertyID = $property_id AND Username = '$username'");
 if (mysqli_num_rows($result) == 0) {
     $loggable = true;
 } else {
     $loggable = false;
+}
+
+$animals = "";
+$crops = "";
+while ($farm_row = mysqli_fetch_assoc($farmitems)) {
+    if ($farm_row['Type'] == 'ANIMAL') {
+        $animals.=" ".$farm_row['Name'].",";
+    } else {
+        $crops.=" ".$farm_row['Name'].",";
+    }
 }
 
 ?>
@@ -109,27 +116,19 @@ if (mysqli_num_rows($result) == 0) {
     ?>
 Animals:
     <?php
-        while ($farm_row = mysqli_fetch_assoc($farmitems)) {
-            if ($farm_row['Type'] == 'ANIMAL') {
-               echo $farm_row['Name'].", ";
-            }
-        }
-        ?>
-    <?php
+        echo $animals;
+    ?>
+<?php
 }
 ?>
 <br>
 Crops:
 <?php
-while ($farm_row = mysqli_fetch_assoc($farmitems)) {
-    if ($farm_row['Type'] != 'ANIMAL') {
-        echo $farm_row['Name'].", ";
-    }
-}
+echo $crops;
 
 if ($loggable) {
     ?>
-<form id="log" name="log" method="post" action="view_property.php">
+<form id="log" name="log" method="post" action="view_property.php?property_id=<?php echo $property_id; ?>">
 
     <input type="hidden" value="LOG" name="form" id="form"/>
     <input type="text" value="" name="rating" id="rating"/>
@@ -139,7 +138,7 @@ if ($loggable) {
     <?php
 } else {
     ?>
-    <form id="unlog" name="unlog" method="post" action="view_property.php">
+    <form id="unlog" name="unlog" method="post" action="view_property.php?property_id=<?php echo $property_id; ?>">
 
         <input type="hidden" value="UNLOG" name="form" id="form"/>
         <input type="submit" value="Unlog Visit"/>

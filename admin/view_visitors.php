@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['form'] == 'DELETEACCT') {
 
         $username = $_POST['username'];
-        $result = $mysqli->query("DELETE FROM User WHERE User.Username = $username");
+        $result = $mysqli->query("DELETE FROM User WHERE User.Username = '$username'");
         $visitors = $mysqli->query("SELECT * FROM (SELECT User.Username, User.Email, Count(Visit.PropertyID) AS Visits, 
             UserType FROM User LEFT JOIN Visit ON User.Username = Visit.Username GROUP BY User.Username) 
             AS OwnerProperties WHERE UserType = 'VISITOR'");
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     } else if ($_POST['form'] == 'DELETELOGS') {
         $username = $_POST['username'];
-        $result = $mysqli->query("DELETE FROM Visit WHERE Visit.Username = $username");
+        $result = $mysqli->query("DELETE FROM Visit WHERE Visit.Username = '$username'");
         $visitors = $mysqli->query("SELECT * FROM (SELECT User.Username, User.Email, Count(Visit.PropertyID) AS Visits, 
               UserType FROM User LEFT JOIN Visit ON User.Username = Visit.Username GROUP BY User.Username) 
               AS OwnerProperties WHERE UserType = 'VISITOR'");
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $searchtext = "";
     $searchtype = "";
     if (isset($_GET['searchtype'])) {
-        $searchtext = "LIKE %".$_GET['searchtext']."%";
+        $searchtext = "LIKE '%".$_GET['searchtext']."%'";
         $searchtype = "AND ".$_GET['searchtype'];
     }
 
@@ -120,8 +120,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <option value="Email">Email</option>
     </select>
     <br>
-    <input type="text" id="searchtext" name="searchtext"/>
-    <button type="button" value="Search" onclick="onSearchClick()"/>
+    <input type="text" id="searchtext" name="searchtext" placeholder="Search Term"/>
+    <input type="button" value="Search" onclick="onSearchClick()"/>
 
     <br>
     <a href="../user/mainpage.php">Back</a>

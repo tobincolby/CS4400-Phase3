@@ -18,10 +18,10 @@ if (!(isset($_SESSION['username']) && $_SESSION['logged_in'] == 1)) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['form'] == 'DELETE') {
         $name = $_POST['name'];
-        $result = $mysqli->query("DELETE FROM FarmItem WHERE Name = $name");
+        $result = $mysqli->query("DELETE FROM FarmItem WHERE Name = '$name'");
     } else {
         $name = $_POST['name'];
-        $result = $mysqli->query("UPDATE FarmItem SET IsApproved = 1 WHERE Name = $name");
+        $result = $mysqli->query("UPDATE FarmItem SET IsApproved = 1 WHERE Name = '$name'");
     }
 
 }
@@ -67,16 +67,16 @@ $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved =
             <tr>
                 <td><?php echo $row['Name']; ?></td><td><?php echo $row['Type']; ?></td>
                 <td>
-                    <form name="delete" action="approved_items.php" method="post">
+                    <form name="delete" action="pending_items_items.php" method="post">
                         <input type="hidden" value="DELETE" name="form" id="form"/>
-                        <input type="hidden" value="<?php echo $row['name']; ?>" name="name" id="name"/>
+                        <input type="hidden" value="<?php echo $row['Name']; ?>" name="name" id="name"/>
                         <input type="submit" value="Delete"/>
                     </form>
                 </td>
                 <td>
-                    <form name="approve" action="approved_items.php" method="post">
+                    <form name="approve" action="pending_items.php" method="post">
                         <input type="hidden" value="APPROVE" name="form" id="form"/>
-                        <input type="hidden" value="<?php echo $row['name']; ?>" name="name" id="name"/>
+                        <input type="hidden" value="<?php echo $row['Name']; ?>" name="name" id="name"/>
                         <input type="submit" value="Approve"/>
                     </form>
                 </td>

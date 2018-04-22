@@ -34,7 +34,7 @@ if (isset($_GET['search'])) {
         $searchquery = "AND Zip = ".$searchtext;
     } else {
         $searchtext = "";
-        $searchquery = "AND ".$searchtype." LIKE %".$searchtext."%";
+        $searchquery = "AND ".$searchtype." LIKE '%".$searchtext."%'";
     }
 }
 
@@ -49,7 +49,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Confirmed Properties</title>
+    <title>Unconfirmed Properties</title>
 
     <style>
         #title {
@@ -179,7 +179,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
         <th>Type</th>
         <th>Public</th>
         <th>Commercial</th>
-        <th>Approved Username</th>
+        <th>ID</th>
         <th>Visits</th>
         <th>Avg. Rating</th>
     </tr>
@@ -195,9 +195,8 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
             <th><?php echo $row['Size']; ?></th>
             <th><?php echo $row['PropertyType']; ?></th>
             <th><?php echo $row['IsPublic']; ?></th>
-            <th><?php echo $row['IsCommerical']; ?></th>
+            <th><?php echo $row['IsCommercial']; ?></th>
             <th><?php echo $row['ID']; ?></th>
-            <th><?php echo $row['ApprovedBy']; ?></th>
             <th><?php echo $row['Visits']; ?></th>
             <th><?php echo $row['Rating']; ?></th>
         </tr>
@@ -230,7 +229,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
         <td><input type="text" id="upperbound" name="upperbound" placeholder="Upper Bound of Search" class="owner_options" style="visibility: hidden;"></td>
     </tr>
     <tr>
-        <td><button type="button" class="button" onclick="onSearchPressed()">Search Properties</button></td>
+        <td><input type="button" class="button" onclick="onSearchPressed()" value="Search Properties"/></td>
         <td><a href="../user/mainpage.php">Back</a></td>
     </tr>
 

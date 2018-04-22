@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($_POST['form'] == 'DELETEACCT') {
         $username = $_POST['username'];
-        $result = $mysqli->query("DELETE FROM User WHERE User.Username = $username");
+        $result = $mysqli->query("DELETE FROM User WHERE User.Username = '$username'");
         $owners = $mysqli->query("SELECT * FROM (SELECT User.Username, User.Email, Count(Property.ID) AS Properties, 
           UserType FROM User LEFT JOIN Property ON User.Username = Property.Owner GROUP BY User.Username) 
           AS OwnerProperties WHERE UserType = 'OWNER'");
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </select>
     <br>
     <input type="text" id="searchtext" name="searchtext"/>
-    <button type="button" value="Search" onclick="onSearchClick()"/>
+    <input type="button" value="Search" onclick="onSearchClick()"/>
 
     <br>
     <a href="../user/mainpage.php">Back</a>

@@ -18,12 +18,12 @@ if (!(isset($_SESSION['username']) && $_SESSION['logged_in'] == 1)) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['form'] == 'DELETE') {
         $name = $_POST['name'];
-        $result = $mysqli->query("DELETE FROM FarmItem WHERE Name = $name");
+        $result = $mysqli->query("DELETE FROM FarmItem WHERE Name = '$name'");
         $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1");
     }  else {
         $type = $_POST['type'];
         $name = $_POST['name'];
-        $result = $mysqli->query("INSERT INTO FarmItem VALUES($name, 1, $type)");
+        $result = $mysqli->query("INSERT INTO FarmItem VALUES('$name', 1, '$type')");
         $farm_items = $mysqli->query("SELECT Name, Type FROM FarmItem WHERE IsApproved = 1");
     }
 } else {
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_GET['searchtype'])) {
         $searchtype = "AND ".$_GET['searchtype'];
-        $searchtext = "LIKE %" . $_GET['searchtext'] . "%";
+        $searchtext = "LIKE '%" . $_GET['searchtext'] . "%'";
     }
 
     $sort_type = "";
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <td>
                     <form name="delete" action="approved_items.php" method="post">
                         <input type="hidden" value="DELETE" name="form" id="form"/>
-                        <input type="hidden" value="<?php echo $row['name']; ?>" name="name" id="name"/>
+                        <input type="hidden" value="<?php echo $row['Name']; ?>" name="name" id="name"/>
                         <input type="submit" value="Delete"/>
                     </form>
                 </td>
@@ -110,7 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <option value="FLOWER">Flower</option>
     </select>
     <br>
-    <input type="text" placeholder="Item Name"/>
+    <input type="text" placeholder="Item Name" id="name" name="name"/>
+    <input type="hidden" name="form" id="form" value="Approve"/>
     <input type="submit" value="Add To Approved List"/>
 
 </form>
@@ -123,8 +124,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </select>
 <br>
 <input type="text" id="searchtext" name="searchtext"/>
-<button type="button" value="Search" onclick="onSearchClick()"/>
+<input type="button" value="Search" onclick="onSearchClick()"/>
 
+<br>
+<a href="../user/mainpage.php">Back</a>
+
+<br>
+<br>
+<br>
 </body>
 
 

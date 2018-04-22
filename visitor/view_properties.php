@@ -23,8 +23,8 @@ if (isset($_GET['sort'])) {
 }
 
 $searchquery = "";
-if (isset($_GET['search'])) {
-    $searchtype = $_GET['search'];
+if (isset($_GET['searchtype'])) {
+    $searchtype = $_GET['searchtype'];
     if ($searchtype == 'Size' || $searchtype == 'Visits' || $searchtype == 'Rating') {
         $lowbound = $_GET['lower'];
         $upperbound = $_GET['upper'];
@@ -37,6 +37,7 @@ if (isset($_GET['search'])) {
         $searchquery = "AND ".$searchtype." LIKE %".$searchtext."%";
     }
 }
+
 
 
 $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Street, Property.City,
@@ -171,7 +172,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 
 
 <body>
-<h1 id="title"><strong>Welcome VISITOR_USERNAME!</strong></h1>
+<h1 id="title"><strong>Welcome <?php $_SESSION['username']; ?>!</strong></h1>
 
 
 <table size="100%" id="property_table">
@@ -200,7 +201,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
             <th><?php echo $row['Size']; ?></th>
             <th><?php echo $row['PropertyType']; ?></th>
             <th><?php echo $row['IsPublic']; ?></th>
-            <th><?php echo $row['IsCommerical']; ?></th>
+            <th><?php echo $row['IsCommercial']; ?></th>
             <th><?php echo $row['ID']; ?></th>
             <th><?php echo $row['Visits']; ?></th>
             <th><?php echo $row['Rating']; ?></th>
@@ -216,7 +217,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 
     <tr>
         <td>
-            <select id="searchtype" class="owner_options" onchange="onSelectChange()">
+            <select id="searchtype" name="searchtype" class="owner_options" onchange="onSelectChange()">
                 <option value="Name">Name</option>
                 <option value="Street">Address</option>
                 <option value="City">City</option>
@@ -244,6 +245,8 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 </table>
 
 
-
+<br>
+<br>
+<br>
 </body>
 </html>

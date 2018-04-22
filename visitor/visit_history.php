@@ -23,11 +23,11 @@ if (isset($_GET['sort'])) {
     $sort_direction = $_GET['sort_direction'];
 
     $visits = $mysqli->query("SELECT VisitDate, Rating, Name, ID AS PropertyID FROM (SELECT Visit.VisitDate, Visit.Rating, Property.Name, Property.ID, Visit.Username FROM Visit JOIN 
-            Property ON (Property.ID = Visit.PropertyID)) AS VisitHistory WHERE Username = $username ORDER BY $sort_type $sort_direction");
+            Property ON (Property.ID = Visit.PropertyID)) AS VisitHistory WHERE Username = '$username' ORDER BY $sort_type $sort_direction");
 } else {
 
     $visits = $mysqli->query("SELECT VisitDate, Rating, Name, ID AS PropertyID FROM (SELECT Visit.VisitDate, Visit.Rating, Property.Name, Property.ID, Visit.Username FROM Visit JOIN 
-            Property ON (Property.ID = Visit.PropertyID)) AS VisitHistory WHERE Username = $username");
+            Property ON (Property.ID = Visit.PropertyID)) AS VisitHistory WHERE Username = '$username'");
 }
 
 ?>

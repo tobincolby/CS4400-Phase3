@@ -14,12 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $confirm_pass = $_POST['confirm_pass'];
+    $confirm_pass = $_POST['confirm_password'];
 
     if ($password != $confirm_pass) {
         $error_msg = "Passwords Don't Match";
     } else {
-        $result = $mysqli->query("SELECT username FROM User WHERE Username=$username OR Email=$email");
+        $result = $mysqli->query("SELECT username FROM User WHERE Username='$username' OR Email='$email'");
         if (mysqli_num_rows($result) != 0) {
             $error_msg = "Email/Username Already exists";
         } else {
@@ -40,19 +40,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 $farm_items = array($_POST['crop_type']);
             }
-            $result = $mysqli->query("SELECT Count(*) FROM Property WHERE PropertyName=$property_name");
+            $result = $mysqli->query("SELECT Count(*) FROM Property WHERE PropertyName='$property_name'");
             if (mysqli_num_rows($result) > 0) {
                 $error_msg = "Property Name Already Exists";
             } else {
-                $result = $mysqli->query("INSERT INTO User VALUES ($username, $email, $newpass, 'OWNER')");
+                $result = $mysqli->query("INSERT INTO User VALUES ('$username', '$email', '$newpass', 'OWNER')");
 
-                $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID");
-                $new_id = mysqli_num_rows($result);
-                $owner_id = $_SESSION['username'];
-                $result = $mysqli->query("INSERT INTO Property VALUES($new_id, $property_name, $size, $is_commercial, 
-                        $is_public, $street_address, $city, $zip, $property_type, $owner_id, NULL)");
+                $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID DESC LIMIT 1");
+                $new_id = mysqli_fetch_assoc($result)["ID"] + 1;
+                $owner_id = $username;
+                $result = $mysqli->query("INSERT INTO Property VALUES($new_id, '$property_name', $size, $is_commercial, 
+                        $is_public, '$street_address', '$city', $zip, '$property_type', '$owner_id', NULL)");
                 foreach ($farm_items as $farm_item) {
-                    $result = $mysqli->query("INSERT INTO Has VALUES($new_id, $farm_item)");
+                    $result = $mysqli->query("INSERT INTO Has VALUES($new_id, '$farm_item')");
                 }
                 header("Location: login.php"); /* Redirect browser */
                 exit();
@@ -200,7 +200,7 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
 
                 var cropSelect = document.getElementById("crop_type");
                 var farmHTML = document.getElementById("farm_html").value;
-                cropSelect.html(farmHTML);
+                cropSelect.innerHTML = farmHTML;
 
             } else if (selectValue == "GARDEN") {
                 document.getElementById("animal_type").style.visibility = "hidden";
@@ -208,14 +208,14 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
 
                 var cropSelect = document.getElementById("crop_type");
                 var gardenHTML = document.getElementById("garden_html").value;
-                cropSelect.html(gardenHTML);
+                cropSelect.innerHTML = gardenHTML;
             } else {
                 document.getElementById("animal_type").style.visibility = "hidden";
                 document.getElementById("animal_type_label").style.visibility = "hidden";
 
                 var cropSelect = document.getElementById("crop_type");
                 var orchardHTML = document.getElementById("orchard_html").value;
-                cropSelect.html(orchardHTML);
+                cropSelect.innerHTML = orchardHTML;
             }
         }
 
@@ -226,12 +226,15 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
 
 
 <h1 id="title"><strong>New Owner Registration</strong></h1>
-<?php if ($error_msg != "") {
+<?php if (isset($error_msg) && $error_msg != "") {
   echo "<h3>".$error_msg."</h3>";
 }
 
 ?>
 <div>
+    <input type = "hidden" value="<?php echo $garden_html; ?>" id="garden_html"/>
+    <input type = "hidden" value="<?php echo $orchard_html; ?>" id="orchard_html"/>
+    <input type = "hidden" value="<?php echo $farm_html; ?>" id="farm_html"/>
 
     <form id="registerowner" name="registerowner" method="post" action="registerowner.php">
         <center>
@@ -275,23 +278,23 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
                 <tr>
                     <td><label for="property_type" text-align>Property Type*: </label></td>
                     <td>
-                        <select id="property_type" onchange="onSelectChange()">
+                        <select id="property_type" name="property_type" onchange="onSelectChange()">
                             <option value="GARDEN">Garden</option>
                             <option value="ORCHARD">Orchard</option>
                             <option value="FARM">Farm</option>
                         </select>
                     </td>
 
-                    <td><label for="animal_type" text-align>Animal*: </label></td>
+                    <td><label for="animal_type" text-align >Animal*: </label></td>
                     <td>
-                        <select id="animal_type">
+                        <select id="animal_type" name="animal_type" style="visibility: hidden">
                             <?php echo $animal_html; ?>
                         </select>
                     </td>
 
                     <td><label for="crop_type" text-align>Crop*: </label></td>
                     <td>
-                        <select id="crop_type">
+                        <select id="crop_type" name="crop_type">
                             <?php
                             echo $garden_html;
                             ?>
@@ -301,7 +304,7 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
                 <tr>
                     <td><label for="is_public" text-align>Public?*: </label></td>
                     <td>
-                        <select id="is_public">
+                        <select id="is_public" name="is_public">
                             <option value="1">Yes</option>
                             <option value="0">No</option>
                         </select>
@@ -310,7 +313,7 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
                 <tr>
                     <td><label for="is_commercial" text-align>Commercial?*: </label></td>
                     <td>
-                        <select id="is_commercial">
+                        <select id="is_commercial" name="is_commercial">
                             <option value="1">Yes</option>
                             <option value="0">No</option>
                         </select>
@@ -320,16 +323,19 @@ while ($row = mysqli_fetch_assoc($farm_animals)) {
             </table>
         </center>
         <br>
-        <button type="button" name="registerOwner" class="button">Register Owner</button>
-        <button type="button" name="Cancel" class="button">Cancel</button>
+
+        <input type="submit" name="register" class="button" value="Register"/>
+        <a href="login.php">Cancel</a>
 
     </form>
 
 </div>
 
-<input type = "hidden" value="<?php echo $garden_html; ?>" id="garden_html"/>
-<input type = "hidden" value="<?php echo $orchard_html; ?>" id="orchard_html"/>
-<input type = "hidden" value="<?php echo $farm_html; ?>" id="farm_html"/>
+<br/>
+<br/>
+<br/>
+<hr/>
+
 
 </body>
 

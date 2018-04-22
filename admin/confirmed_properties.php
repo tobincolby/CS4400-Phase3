@@ -179,6 +179,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
         <th>Type</th>
         <th>Public</th>
         <th>Commercial</th>
+        <th>ID</th>
         <th>Approved Username</th>
         <th>Visits</th>
         <th>Avg. Rating</th>
@@ -195,7 +196,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
             <th><?php echo $row['Size']; ?></th>
             <th><?php echo $row['PropertyType']; ?></th>
             <th><?php echo $row['IsPublic']; ?></th>
-            <th><?php echo $row['IsCommerical']; ?></th>
+            <th><?php echo $row['IsCommercial']; ?></th>
             <th><?php echo $row['ID']; ?></th>
             <th><?php echo $row['ApprovedBy']; ?></th>
             <th><?php echo $row['Visits']; ?></th>
@@ -237,6 +238,10 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
 
 
 </table>
+
+<br>
+<br>
+<br>
 
 </body>
 </html>

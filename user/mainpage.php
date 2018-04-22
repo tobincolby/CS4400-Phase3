@@ -32,6 +32,7 @@ if ($_SESSION['UserType'] == 'ADMIN') {
         <tr><td><a href="../admin/confirmed_properties.php">View Confirmed Properties List</a> </td></tr>
         <tr><td><a href="../admin/approved_items.php">View Approved Item List</a> </td></tr>
         <tr><td><a href="../admin/pending_items.php">View Pending Item List</a> </td></tr>
+        <tr><td><a href="logout.php">Logout</a></td></tr>
     </table>
 
 
