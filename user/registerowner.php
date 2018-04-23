@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($password != $confirm_pass) {
             $error_msg = "Passwords Don't Match";
         } else {
-            $result = $mysqli->query("SELECT username FROM User WHERE Username='$username' OR Email='$email'");
+            $result = $mysqli->query("SELECT Username FROM User WHERE Username='$username' OR Email='$email'");
             if (mysqli_num_rows($result) != 0) {
                 $error_msg = "Email/Username Already exists";
             } else {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     $result = $mysqli->query("INSERT INTO User VALUES ('$username', '$email', '$newpass', 'OWNER')");
 
-                    $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID DESC LIMIT 1");
+                    $result = $mysqli->query("SELECT MAX(ID) AS ID FROM Property");
                     $new_id = mysqli_fetch_assoc($result)["ID"] + 1;
                     $owner_id = $username;
                     $result = $mysqli->query("INSERT INTO Property (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)

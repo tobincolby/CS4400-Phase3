@@ -40,7 +40,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_msg = "Property Name Already Exists";
     } else {
 
-        $result = $mysqli->query("SELECT ID FROM Property ORDER BY ID DESC LIMIT 1");
+        $result = $mysqli->query("SELECT MAX(ID) AS ID FROM Property");
         $new_id = mysqli_fetch_assoc($result)["ID"] + 1;
         $result = $mysqli->query("INSERT INTO Property (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)
                                                 VALUES ('$new_id', '$property_name', '$size', '$is_commercial', '$is_public', '$street_address', '$city', '$zip', '$property_type', '$owner_username', NULL)");

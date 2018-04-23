@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($password != $confirm_pass) {
             $error_msg = "Passwords Don't Match";
         } else {
-            $result = $mysqli->query("SELECT username FROM User WHERE Username='$username' OR Email='$email'");
+            $result = $mysqli->query("SELECT Username FROM User WHERE Username='$username' OR Email='$email'");
             if (mysqli_num_rows($result) != 0) {
                 $error_msg = "Email/Username Already exists";
             } else {

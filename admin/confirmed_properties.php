@@ -230,7 +230,7 @@ $properties = $mysqli->query("SELECT * FROM (SELECT Property.Name, Property.Stre
             <th><?php echo $row['PropertyType']; ?></th>
             <th><?php echo $row['IsPublic']; ?></th>
             <th><?php echo $row['IsCommercial']; ?></th>
-            <th><?php echo $row['ID']; ?></th>
+            <th><?php echo str_pad($row['ID'], 5, '0', STR_PAD_LEFT); ?></th>
             <th><?php echo $row['ApprovedBy']; ?></th>
             <th><?php echo $row['Visits']; ?></th>
             <th><?php echo $row['Rating']; ?></th>

@@ -50,17 +50,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($item != "")
                 $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
             }
-            $farm_item_count = mysqli_fetch_assoc($mysqli->query("SELECT Count(*) AS Items FROM Has WHERE PropertyID = $property_id"))["Items"];
-            if ($farm_item_count == 0 || ($_POST['property_type'] == 'FARM' && $farm_item_count <= 1)) {
-                foreach ($deleted_items as $item) {
-                    if ($item != "0")
-                        $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
+            if ($_POST['property_type'] == 'FARM') {
+                $farm_animal_count = mysqli_fetch_assoc($mysqli->query("SELECT Count(*) AS Items FROM FarmItem WHERE Type = 'ANIMAL' AND Name IN (SELECT ItemName FROM Has WHERE PropertyID = $property_id)"))["Items"];
+                $farm_crop_count = mysqli_fetch_assoc($mysqli->query("SELECT Count(*) AS Items FROM FarmItem WHERE NOT (Type = 'ANIMAL') AND Name IN (SELECT ItemName FROM Has WHERE PropertyID = $property_id)"))["Items"];
+                if ($farm_animal_count == 0 || $farm_crop_count == 0) {
+                    foreach ($deleted_items as $item) {
+                        if ($item != "0")
+                            $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
+                    }
+                    foreach ($added_items as $item) {
+                        if ($item != "0")
+                            $delete_result = $mysqli->query("DELETE FROM Has WHERE PropertyID = $property_id AND ItemName = '$item'");
+                    }
+                    $errormsg = "You can't remove all of your items without adding some";
                 }
-                foreach ($added_items as $item) {
-                    if ($item != "0")
-                        $delete_result = $mysqli->query("DELETE FROM Has WHERE PropertyID = $property_id AND ItemName = '$item'");
+            } else {
+                $farm_crop_count = mysqli_fetch_assoc($mysqli->query("SELECT Count(*) AS Items FROM FarmItem WHERE NOT (Type = 'ANIMAL') AND Name IN (SELECT ItemName FROM Has WHERE PropertyID = $property_id)"))["Items"];
+                if ($farm_crop_count == 0) {
+                    foreach ($deleted_items as $item) {
+                        if ($item != "0")
+                            $add_result = $mysqli->query("INSERT INTO Has VALUES ($property_id, '$item')");
+                    }
+                    foreach ($added_items as $item) {
+                        if ($item != "0")
+                            $delete_result = $mysqli->query("DELETE FROM Has WHERE PropertyID = $property_id AND ItemName = '$item'");
+                    }
+                    $errormsg = "You can't remove all of your items without adding some";
                 }
-                $errormsg = "You can't remove all of your items without adding some";
             }
         } else {
             $errormsg = "The name you are changing the property to already exists";
@@ -286,7 +302,7 @@ while ($farm_item_row = mysqli_fetch_assoc($farm_items)) {
                 </tr>
                 <tr>
                     <td><label for="prop_id">ID: </label></td>
-                    <td><label id="prop_id"><?php echo $property_row['ID']; ?> </label></td>
+                    <td><label id="prop_id"><?php echo str_pad($property_row['ID'], 5, '0', STR_PAD_LEFT); ?> </label></td>
                 </tr>
                 <tr>
                     <td><label for="is_public" text-align>Public: </label></td>

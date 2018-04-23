@@ -78,7 +78,7 @@ $farmitems = $mysqli->query("SELECT * FROM FarmItem WHERE FarmItem.Name IN (SELE
         <td>Commercial:</td><td><?php echo $row['IsCommercial'] == 1 ? "True" : "False"; ?></td>
     </tr>
     <tr>
-        <td>ID:</td><td><?php echo $row['ID']; ?></td>
+        <td>ID:</td><td><?php echo str_pad($row['ID'], 5, '0', STR_PAD_LEFT); ?></td>
     </tr>
 
 
